@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8FCFB"/>
+      <stop offset="1" stop-color="#E1F1EC"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#168578"/>
+      <stop offset="1" stop-color="#0E6A5F"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F6B26B"/>
+      <stop offset="1" stop-color="#F2994A"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <circle cx="400" cy="360" r="275" fill="#FFFFFF" opacity="0.45"/>
+  <circle cx="680" cy="130" r="60" fill="#DFF2ED" opacity="0.75"/>
+  <circle cx="120" cy="665" r="44" fill="#FDEBDD" opacity="0.85"/>
+  <ellipse cx="400" cy="665" rx="235" ry="28" fill="#0E3B33" opacity="0.10" filter="url(#shadow)"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    
+    <g>
+      <path d="M400 168 v42" stroke="#0E6A5F" stroke-width="8"/>
+      <path d="M400 210 L250 300 M400 210 L550 300" stroke="#0E6A5F" stroke-width="8"/>
+      <path d="M250 300 q150 -42 300 0" fill="none" stroke="#0E6A5F" stroke-width="8"/>
+      <circle cx="400" cy="164" r="11" fill="#F2994A"/>
+      <path d="M300 260 L400 300 L500 260 L560 340 L520 370 L520 610 Q400 650 280 610 L280 370 L240 340 Z" fill="#FFFFFF" stroke="#DCEAE6" stroke-width="4"/>
+      <path d="M300 280 L220 420 L275 450 L340 340" fill="#FFFFFF" stroke="#DCEAE6" stroke-width="4"/>
+      <path d="M500 280 L580 420 L525 450 L460 340" fill="#FFFFFF" stroke="#DCEAE6" stroke-width="4"/>
+      <path d="M350 270 L400 330 L450 270" fill="none" stroke="#0E6A5F" stroke-width="6"/>
+      <circle cx="400" cy="370" r="6" fill="#0E6A5F"/>
+      <circle cx="400" cy="410" r="6" fill="#0E6A5F"/>
+      <circle cx="400" cy="450" r="6" fill="#0E6A5F"/>
+      <rect x="310" y="500" width="70" height="70" rx="8" fill="#F6FAF9" stroke="#DCEAE6" stroke-width="3"/>
+      <rect x="420" y="500" width="70" height="70" rx="8" fill="#F6FAF9" stroke="#DCEAE6" stroke-width="3"/>
+      <rect x="325" y="405" width="44" height="18" rx="9" fill="#F2994A"/>
+      <text x="347" y="419" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">DOrSU</text>
+      <path d="M505 520 h12 v36 h-12z" fill="#0E6A5F" opacity="0.75"/>
+    </g>
+  
+  </g>
+</svg>

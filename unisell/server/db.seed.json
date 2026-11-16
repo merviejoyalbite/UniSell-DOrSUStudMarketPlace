@@ -1,0 +1,872 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Mika Santos",
+      "email": "mika.santos@dorsu.edu.ph",
+      "password": "unisell123",
+      "course": "BSIT",
+      "yearLevel": "3rd Year",
+      "studentId": "2022-0417"
+    },
+    {
+      "id": 2,
+      "name": "Jun Reyes",
+      "email": "jun.reyes@dorsu.edu.ph",
+      "password": "unisell123",
+      "course": "BSED",
+      "yearLevel": "4th Year",
+      "studentId": "2021-1180"
+    },
+    {
+      "id": 3,
+      "name": "Ana Dela Cruz",
+      "email": "ana.delacruz@dorsu.edu.ph",
+      "password": "unisell123",
+      "course": "BSBA",
+      "yearLevel": "4th Year",
+      "studentId": "2021-0932"
+    },
+    {
+      "id": 4,
+      "name": "Carlo Mendoza",
+      "email": "carlo.mendoza@dorsu.edu.ph",
+      "password": "unisell123",
+      "course": "BSCS",
+      "yearLevel": "2nd Year",
+      "studentId": "2023-0745"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Textbooks",
+      "icon": "book-outline"
+    },
+    {
+      "id": 2,
+      "name": "Uniforms",
+      "icon": "shirt-outline"
+    },
+    {
+      "id": 3,
+      "name": "Gadgets",
+      "icon": "hardware-chip-outline"
+    },
+    {
+      "id": 4,
+      "name": "Dorm Items",
+      "icon": "bed-outline"
+    },
+    {
+      "id": 5,
+      "name": "Food",
+      "icon": "fast-food-outline"
+    },
+    {
+      "id": 6,
+      "name": "Others",
+      "icon": "ellipsis-horizontal-circle-outline"
+    }
+  ],
+  "listings": [
+    {
+      "id": 1,
+      "title": "Calculus: Early Transcendentals (8th Edition)",
+      "description": "Stewart's 8th edition. Complete pages, no heavy annotations. Slight cover wear from daily use.",
+      "price": 450,
+      "category": "Textbooks",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/01-calculus-early-transcendentals-8th-edition.jpg",
+      "sellerId": 2,
+      "sellerName": "Jun Reyes",
+      "sellerCourse": "BSED",
+      "sellerYearLevel": "4th Year",
+      "meetupSpot": "Main Library Lobby",
+      "createdAt": "2026-10-21T09:15:00.000Z",
+      "images": [
+        "/images/01-calculus-early-transcendentals-8th-edition.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 2,
+      "title": "DOrSU PE Uniform (Medium)",
+      "description": "Official PE uniform, medium size. Washed and ready to wear. No stains or tears.",
+      "price": 250,
+      "category": "Uniforms",
+      "condition": "Used",
+      "status": "reserved",
+      "image": "/images/02-dorsu-pe-uniform-medium.jpg",
+      "sellerId": 1,
+      "sellerName": "Mika Santos",
+      "sellerCourse": "BSIT",
+      "sellerYearLevel": "3rd Year",
+      "meetupSpot": "PE Building Entrance",
+      "createdAt": "2026-10-20T14:40:00.000Z",
+      "images": [
+        "/images/02-dorsu-pe-uniform-medium.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 3,
+      "title": "TI-84 Plus CE Graphing Calculator",
+      "description": "Works perfectly, includes charging cable. Great for engineering and statistics subjects.",
+      "price": 1800,
+      "category": "Gadgets",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/03-ti-84-plus-ce-graphing-calculator.jpg",
+      "sellerId": 4,
+      "sellerName": "Carlo Mendoza",
+      "sellerCourse": "BSCS",
+      "sellerYearLevel": "2nd Year",
+      "meetupSpot": "IT Building Lobby",
+      "createdAt": "2026-10-19T10:05:00.000Z",
+      "images": [
+        "/images/03-ti-84-plus-ce-graphing-calculator.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 4,
+      "title": "Laboratory Gown (Small)",
+      "description": "Brand new lab gown, size small. Bought an extra one by mistake.",
+      "price": 300,
+      "category": "Uniforms",
+      "condition": "New",
+      "status": "sold",
+      "image": "/images/04-laboratory-gown-small.jpg",
+      "sellerId": 3,
+      "sellerName": "Ana Dela Cruz",
+      "sellerCourse": "BSBA",
+      "sellerYearLevel": "4th Year",
+      "meetupSpot": "Science Building",
+      "createdAt": "2026-10-18T16:20:00.000Z",
+      "images": [
+        "/images/04-laboratory-gown-small.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 5,
+      "title": "Homemade Brownies (Box of 6)",
+      "description": "Fudgy brownies baked on the same day. Perfect for study sessions. Order a day ahead.",
+      "price": 180,
+      "category": "Food",
+      "condition": "New",
+      "status": "available",
+      "image": "/images/05-homemade-brownies-box-of-6.jpg",
+      "sellerId": 1,
+      "sellerName": "Mika Santos",
+      "sellerCourse": "BSIT",
+      "sellerYearLevel": "3rd Year",
+      "meetupSpot": "Main Gate",
+      "createdAt": "2026-10-21T07:50:00.000Z",
+      "images": [
+        "/images/05-homemade-brownies-box-of-6.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 6,
+      "title": "Electric Fan (12 inch, dorm size)",
+      "description": "Quiet 12-inch desk fan with three speeds. Used for one semester only.",
+      "price": 550,
+      "category": "Dorm Items",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/06-electric-fan-12-inch-dorm-size.jpg",
+      "sellerId": 4,
+      "sellerName": "Carlo Mendoza",
+      "sellerCourse": "BSCS",
+      "sellerYearLevel": "2nd Year",
+      "meetupSpot": "Dormitory Gate",
+      "createdAt": "2026-10-20T18:10:00.000Z",
+      "images": [
+        "/images/06-electric-fan-12-inch-dorm-size.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 7,
+      "title": "Fundamentals of Nursing (11th Edition)",
+      "description": "Hardcover nursing textbook. Minimal highlighting on the first five chapters.",
+      "price": 620,
+      "category": "Textbooks",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/07-fundamentals-of-nursing-11th-edition.jpg",
+      "sellerId": 3,
+      "sellerName": "Ana Dela Cruz",
+      "sellerCourse": "BSBA",
+      "sellerYearLevel": "4th Year",
+      "meetupSpot": "Nursing Building",
+      "createdAt": "2026-10-19T13:35:00.000Z",
+      "images": [
+        "/images/07-fundamentals-of-nursing-11th-edition.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 8,
+      "title": "Casio fx-991EX Scientific Calculator",
+      "description": "Fully working with slide cover. Required model for most DOrSU math subjects.",
+      "price": 650,
+      "category": "Gadgets",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/08-casio-fx-991ex-scientific-calculator.jpg",
+      "sellerId": 3,
+      "sellerName": "Ana Dela Cruz",
+      "sellerCourse": "BSBA",
+      "sellerYearLevel": "4th Year",
+      "meetupSpot": "Admin Building",
+      "createdAt": "2026-10-17T11:25:00.000Z",
+      "images": [
+        "/images/08-casio-fx-991ex-scientific-calculator.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 9,
+      "title": "DOrSU Lanyard with ID Case",
+      "description": "New official-style DOrSU lanyard with a clear ID case. Two pieces available.",
+      "price": 60,
+      "category": "Others",
+      "condition": "New",
+      "status": "available",
+      "image": "/images/09-dorsu-lanyard-with-id-case.jpg",
+      "sellerId": 2,
+      "sellerName": "Jun Reyes",
+      "sellerCourse": "BSED",
+      "sellerYearLevel": "4th Year",
+      "meetupSpot": "Student Center",
+      "createdAt": "2026-10-21T12:00:00.000Z",
+      "images": [
+        "/images/09-dorsu-lanyard-with-id-case.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 10,
+      "title": "IT Fundamentals Review Notes (Photocopy)",
+      "description": "Complete photocopied review notes for IT Fundamentals. Clear print, bound with staples.",
+      "price": 120,
+      "category": "Textbooks",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/10-it-fundamentals-review-notes-photocopy.jpg",
+      "sellerId": 1,
+      "sellerName": "Mika Santos",
+      "sellerCourse": "BSIT",
+      "sellerYearLevel": "3rd Year",
+      "meetupSpot": "IT Building Lobby",
+      "createdAt": "2026-10-16T15:45:00.000Z",
+      "images": [
+        "/images/10-it-fundamentals-review-notes-photocopy.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 11,
+      "title": "Mini Rice Cooker (1.2L)",
+      "description": "Compact rice cooker with steamer tray. Clean and fully functional.",
+      "price": 700,
+      "category": "Dorm Items",
+      "condition": "Used",
+      "status": "reserved",
+      "image": "/images/11-mini-rice-cooker-1-2l.jpg",
+      "sellerId": 4,
+      "sellerName": "Carlo Mendoza",
+      "sellerCourse": "BSCS",
+      "sellerYearLevel": "2nd Year",
+      "meetupSpot": "Dormitory Gate",
+      "createdAt": "2026-10-15T09:30:00.000Z",
+      "images": [
+        "/images/11-mini-rice-cooker-1-2l.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 12,
+      "title": "Poster / Tarpaulin Printing (per sq ft)",
+      "description": "Affordable tarpaulin printing for org events and class projects. Same-day for small orders.",
+      "price": 25,
+      "category": "Others",
+      "condition": "New",
+      "status": "available",
+      "image": "/images/12-poster-tarpaulin-printing-per-sq-ft.jpg",
+      "sellerId": 2,
+      "sellerName": "Jun Reyes",
+      "sellerCourse": "BSED",
+      "sellerYearLevel": "4th Year",
+      "meetupSpot": "Student Center",
+      "createdAt": "2026-10-14T11:10:00.000Z",
+      "images": [
+        "/images/12-poster-tarpaulin-printing-per-sq-ft.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 13,
+      "title": "PE Shoes (Size 7, White)",
+      "description": "White rubber shoes, size 7. Lightly used for PE classes only.",
+      "price": 350,
+      "category": "Uniforms",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/13-pe-shoes-size-7-white.jpg",
+      "sellerId": 3,
+      "sellerName": "Ana Dela Cruz",
+      "sellerCourse": "BSBA",
+      "sellerYearLevel": "4th Year",
+      "meetupSpot": "Gymnasium",
+      "createdAt": "2026-10-13T16:55:00.000Z",
+      "images": [
+        "/images/13-pe-shoes-size-7-white.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 14,
+      "title": "Desk Lamp with USB Port",
+      "description": "Adjustable LED desk lamp with a USB charging port. Great for late-night reviews.",
+      "price": 220,
+      "category": "Dorm Items",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/14-desk-lamp-with-usb-port.jpg",
+      "sellerId": 1,
+      "sellerName": "Mika Santos",
+      "sellerCourse": "BSIT",
+      "sellerYearLevel": "3rd Year",
+      "meetupSpot": "Dormitory Gate",
+      "createdAt": "2026-10-12T20:05:00.000Z",
+      "images": [
+        "/images/14-desk-lamp-with-usb-port.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 15,
+      "title": "Arduino Uno Starter Kit",
+      "description": "Complete starter kit with breadboard, jumper wires, LEDs and sensors. Used once for a project.",
+      "price": 900,
+      "category": "Gadgets",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/15-arduino-uno-starter-kit.jpg",
+      "sellerId": 4,
+      "sellerName": "Carlo Mendoza",
+      "sellerCourse": "BSCS",
+      "sellerYearLevel": "2nd Year",
+      "meetupSpot": "IT Building Lobby",
+      "createdAt": "2026-10-11T14:00:00.000Z",
+      "images": [
+        "/images/15-arduino-uno-starter-kit.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 16,
+      "title": "Accounting Workbook (Brand New)",
+      "description": "Unused accounting workbook for first-year students. No writing or torn pages.",
+      "price": 280,
+      "category": "Textbooks",
+      "condition": "New",
+      "status": "available",
+      "image": "/images/16-accounting-workbook-brand-new.jpg",
+      "sellerId": 2,
+      "sellerName": "Jun Reyes",
+      "sellerCourse": "BSED",
+      "sellerYearLevel": "4th Year",
+      "meetupSpot": "College of Business",
+      "createdAt": "2026-10-10T10:40:00.000Z",
+      "images": [
+        "/images/16-accounting-workbook-brand-new.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 17,
+      "title": "Iced Coffee Beans (250g, Local Roast)",
+      "description": "Freshly roasted local coffee beans, medium grind. Sealed bag, good for iced coffee.",
+      "price": 320,
+      "category": "Food",
+      "condition": "New",
+      "status": "available",
+      "image": "/images/17-iced-coffee-beans-250g-local-roast.jpg",
+      "sellerId": 3,
+      "sellerName": "Ana Dela Cruz",
+      "sellerCourse": "BSBA",
+      "sellerYearLevel": "4th Year",
+      "meetupSpot": "Main Gate",
+      "createdAt": "2026-10-09T08:20:00.000Z",
+      "images": [
+        "/images/17-iced-coffee-beans-250g-local-roast.jpg"
+      ],
+      "imageType": "sample"
+    },
+    {
+      "id": 18,
+      "title": "Extension Cord (4 sockets, 3m)",
+      "description": "Heavy-duty extension cord with four sockets and a 3-metre cable. Tested and working.",
+      "price": 180,
+      "category": "Dorm Items",
+      "condition": "Used",
+      "status": "available",
+      "image": "/images/18-extension-cord-4-sockets-3m.jpg",
+      "sellerId": 4,
+      "sellerName": "Carlo Mendoza",
+      "sellerCourse": "BSCS",
+      "sellerYearLevel": "2nd Year",
+      "meetupSpot": "Dormitory Gate",
+      "createdAt": "2026-10-08T17:15:00.000Z",
+      "images": [
+        "/images/18-extension-cord-4-sockets-3m.jpg"
+      ],
+      "imageType": "sample"
+    }
+  ],
+  "reservations": [
+    {
+      "id": 1,
+      "listingId": 1,
+      "buyerId": 4,
+      "sellerId": 2,
+      "buyerName": "Carlo Mendoza",
+      "buyerCourse": "BSCS",
+      "buyerYearLevel": "2nd Year",
+      "listingTitle": "Calculus: Early Transcendentals (8th Edition)",
+      "status": "pending",
+      "meetupSpot": "Main Library Lobby",
+      "meetupAt": "2026-11-12T06:00:00.000Z",
+      "note": "Can meet after my 3 PM class.",
+      "createdAt": "2026-11-10T02:10:00.000Z",
+      "updatedAt": "2026-11-10T02:10:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 2,
+      "listingId": 6,
+      "buyerId": 1,
+      "sellerId": 4,
+      "buyerName": "Mika Santos",
+      "buyerCourse": "BSIT",
+      "buyerYearLevel": "3rd Year",
+      "listingTitle": "Electric Fan (12 inch, dorm size)",
+      "status": "pending",
+      "meetupSpot": "Dormitory Gate",
+      "meetupAt": "2026-11-11T04:00:00.000Z",
+      "note": "I can pick it up at lunch.",
+      "createdAt": "2026-11-10T01:30:00.000Z",
+      "updatedAt": "2026-11-10T01:30:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 3,
+      "listingId": 3,
+      "buyerId": 2,
+      "sellerId": 4,
+      "buyerName": "Jun Reyes",
+      "buyerCourse": "BSED",
+      "buyerYearLevel": "4th Year",
+      "listingTitle": "TI-84 Plus CE Graphing Calculator",
+      "status": "pending",
+      "meetupSpot": "IT Building Lobby",
+      "meetupAt": "2026-11-13T08:00:00.000Z",
+      "note": "",
+      "createdAt": "2026-11-09T09:15:00.000Z",
+      "updatedAt": "2026-11-09T09:15:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 4,
+      "listingId": 2,
+      "buyerId": 3,
+      "sellerId": 1,
+      "buyerName": "Ana Dela Cruz",
+      "buyerCourse": "BSBA",
+      "buyerYearLevel": "4th Year",
+      "listingTitle": "DOrSU PE Uniform (Medium)",
+      "status": "accepted",
+      "meetupSpot": "PE Building Entrance",
+      "meetupAt": "2026-11-11T06:00:00.000Z",
+      "note": "",
+      "createdAt": "2026-11-08T03:00:00.000Z",
+      "updatedAt": "2026-11-09T02:00:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 5,
+      "listingId": 5,
+      "buyerId": 4,
+      "sellerId": 1,
+      "buyerName": "Carlo Mendoza",
+      "buyerCourse": "BSCS",
+      "buyerYearLevel": "2nd Year",
+      "listingTitle": "Homemade Brownies (Box of 6)",
+      "status": "declined",
+      "meetupSpot": "Main Gate",
+      "meetupAt": "2026-11-07T04:00:00.000Z",
+      "note": "",
+      "createdAt": "2026-11-06T02:00:00.000Z",
+      "updatedAt": "2026-11-06T05:00:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 6,
+      "listingId": 4,
+      "buyerId": 4,
+      "sellerId": 3,
+      "buyerName": "Carlo Mendoza",
+      "buyerCourse": "BSCS",
+      "buyerYearLevel": "2nd Year",
+      "listingTitle": "Laboratory Gown (Small)",
+      "status": "completed",
+      "meetupSpot": "Science Building",
+      "meetupAt": "2026-10-20T06:00:00.000Z",
+      "note": "",
+      "createdAt": "2026-10-18T02:00:00.000Z",
+      "updatedAt": "2026-10-20T07:00:00.000Z",
+      "sample": true
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 4,
+      "title": "Mika Santos sent a reserve request",
+      "detail": "Review the requested meetup details.",
+      "tone": "teal",
+      "target": "listing",
+      "listingId": 6,
+      "createdAt": "2026-11-12T02:10:00.000Z",
+      "read": false,
+      "sample": true
+    },
+    {
+      "id": 2,
+      "userId": 4,
+      "title": "Jun Reyes sent a reserve request",
+      "detail": "Review the requested meetup details.",
+      "tone": "teal",
+      "target": "listing",
+      "listingId": 3,
+      "createdAt": "2026-11-12T01:15:00.000Z",
+      "read": false,
+      "sample": true
+    },
+    {
+      "id": 3,
+      "userId": 4,
+      "title": "Reserve request declined",
+      "detail": "Mika Santos declined your Homemade Brownies (Box of 6) request.",
+      "tone": "amber",
+      "target": "listing",
+      "listingId": 5,
+      "createdAt": "2026-11-06T05:00:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "title": "Your reserve was accepted",
+      "detail": "Ana Dela Cruz accepted your Laboratory Gown (Small) request.",
+      "tone": "green",
+      "target": "listing",
+      "listingId": 4,
+      "createdAt": "2026-10-19T02:00:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 5,
+      "userId": 4,
+      "title": "Item marked as sold",
+      "detail": "Laboratory Gown (Small) was handed over by Ana Dela Cruz. You can now leave a review.",
+      "tone": "green",
+      "target": "review",
+      "listingId": 4,
+      "createdAt": "2026-10-20T07:00:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 6,
+      "userId": 4,
+      "title": "New review received",
+      "detail": "Ana Dela Cruz gave you 5 stars: “Friendly and easy to meet!”",
+      "tone": "blue",
+      "target": "shop",
+      "listingId": 4,
+      "createdAt": "2026-10-21T03:20:00.000Z",
+      "read": true,
+      "sample": true
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "listingId": 4,
+      "reservationId": 6,
+      "reviewerId": 3,
+      "reviewerName": "Ana Dela Cruz",
+      "revieweeId": 4,
+      "revieweeName": "Carlo Mendoza",
+      "rating": 5,
+      "tags": ["On time", "Friendly"],
+      "comment": "Friendly and easy to meet. Paid in cash right on time!",
+      "createdAt": "2026-10-21T03:15:00.000Z",
+      "sample": true
+    }
+  ],
+  "chats": [
+    {
+      "id": 1,
+      "listingId": 5,
+      "buyerId": 4,
+      "sellerId": 1,
+      "buyerName": "Carlo Mendoza",
+      "sellerName": "Mika Santos",
+      "listingTitle": "Homemade Brownies (Box of 6)",
+      "listingPrice": 180,
+      "listingImage": "/images/05-homemade-brownies-box-of-6.jpg",
+      "listingCategory": "Food",
+      "listingStatus": "available",
+      "createdAt": "2026-11-12T02:30:00.000Z",
+      "updatedAt": "2026-11-12T02:38:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 2,
+      "listingId": 1,
+      "buyerId": 4,
+      "sellerId": 2,
+      "buyerName": "Carlo Mendoza",
+      "sellerName": "Jun Reyes",
+      "listingTitle": "Calculus: Early Transcendentals (8th Edition)",
+      "listingPrice": 450,
+      "listingImage": "/images/01-calculus-early-transcendentals-8th-edition.jpg",
+      "listingCategory": "Textbooks",
+      "listingStatus": "available",
+      "createdAt": "2026-11-11T06:10:00.000Z",
+      "updatedAt": "2026-11-11T06:20:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 3,
+      "listingId": 6,
+      "buyerId": 1,
+      "sellerId": 4,
+      "buyerName": "Mika Santos",
+      "sellerName": "Carlo Mendoza",
+      "listingTitle": "Electric Fan (12 inch, dorm size)",
+      "listingPrice": 550,
+      "listingImage": "/images/06-electric-fan-12-inch-dorm-size.jpg",
+      "listingCategory": "Dorm Items",
+      "listingStatus": "available",
+      "createdAt": "2026-11-10T01:30:00.000Z",
+      "updatedAt": "2026-11-10T01:50:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 4,
+      "listingId": 3,
+      "buyerId": 2,
+      "sellerId": 4,
+      "buyerName": "Jun Reyes",
+      "sellerName": "Carlo Mendoza",
+      "listingTitle": "TI-84 Plus CE Graphing Calculator",
+      "listingPrice": 1800,
+      "listingImage": "/images/03-ti-84-plus-ce-graphing-calculator.jpg",
+      "listingCategory": "Gadgets",
+      "listingStatus": "available",
+      "createdAt": "2026-11-10T08:30:00.000Z",
+      "updatedAt": "2026-11-10T09:15:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 5,
+      "listingId": 4,
+      "buyerId": 4,
+      "sellerId": 3,
+      "buyerName": "Carlo Mendoza",
+      "sellerName": "Ana Dela Cruz",
+      "listingTitle": "Laboratory Gown (Small)",
+      "listingPrice": 300,
+      "listingImage": "/images/04-laboratory-gown-small.jpg",
+      "listingCategory": "Uniforms",
+      "listingStatus": "sold",
+      "createdAt": "2026-10-18T02:10:00.000Z",
+      "updatedAt": "2026-10-20T07:10:00.000Z",
+      "sample": true
+    },
+    {
+      "id": 6,
+      "listingId": 11,
+      "buyerId": 3,
+      "sellerId": 4,
+      "buyerName": "Ana Dela Cruz",
+      "sellerName": "Carlo Mendoza",
+      "listingTitle": "Mini Rice Cooker (1.2L)",
+      "listingPrice": 700,
+      "listingImage": "/images/11-mini-rice-cooker-1-2l.jpg",
+      "listingCategory": "Dorm Items",
+      "listingStatus": "reserved",
+      "createdAt": "2026-11-09T03:00:00.000Z",
+      "updatedAt": "2026-11-10T04:00:00.000Z",
+      "sample": true
+    }
+  ],
+  "chatMessages": [
+    {
+      "id": 1,
+      "chatId": 1,
+      "senderId": 4,
+      "body": "Hi! Are the brownies still available?",
+      "createdAt": "2026-11-12T02:34:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 2,
+      "chatId": 1,
+      "senderId": 1,
+      "body": "Yes, I still have boxes available today.",
+      "createdAt": "2026-11-12T02:38:00.000Z",
+      "read": false,
+      "sample": true
+    },
+    {
+      "id": 3,
+      "chatId": 2,
+      "senderId": 4,
+      "body": "Hi, is the Calculus book still available?",
+      "createdAt": "2026-11-11T06:12:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 4,
+      "chatId": 2,
+      "senderId": 2,
+      "body": "The book is still in good condition.",
+      "createdAt": "2026-11-11T06:20:00.000Z",
+      "read": false,
+      "sample": true
+    },
+    {
+      "id": 5,
+      "chatId": 3,
+      "senderId": 1,
+      "body": "Hi! Is the electric fan still available?",
+      "createdAt": "2026-11-10T01:32:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 6,
+      "chatId": 3,
+      "senderId": 4,
+      "body": "Yes, it's still available. You can reserve it.",
+      "createdAt": "2026-11-10T01:40:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 7,
+      "chatId": 3,
+      "senderId": 1,
+      "body": "I sent a reserve request. See you at the Dormitory Gate!",
+      "createdAt": "2026-11-10T01:50:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 8,
+      "chatId": 4,
+      "senderId": 2,
+      "body": "Hi, is the calculator still available?",
+      "createdAt": "2026-11-10T08:32:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 9,
+      "chatId": 4,
+      "senderId": 4,
+      "body": "Yes. I can meet at the IT Building Lobby.",
+      "createdAt": "2026-11-10T08:40:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 10,
+      "chatId": 4,
+      "senderId": 2,
+      "body": "Perfect. I'll bring exact cash.",
+      "createdAt": "2026-11-10T09:15:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 11,
+      "chatId": 5,
+      "senderId": 4,
+      "body": "Hi! I'd like to buy the lab gown.",
+      "createdAt": "2026-10-18T02:12:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 12,
+      "chatId": 5,
+      "senderId": 3,
+      "body": "Sure, it's still available.",
+      "createdAt": "2026-10-18T02:20:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 13,
+      "chatId": 5,
+      "senderId": 4,
+      "body": "Thank you for the smooth meetup!",
+      "createdAt": "2026-10-20T07:10:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 14,
+      "chatId": 6,
+      "senderId": 3,
+      "body": "Is the rice cooker still available?",
+      "createdAt": "2026-11-09T03:02:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 15,
+      "chatId": 6,
+      "senderId": 4,
+      "body": "Yes, I can hold it for you until Friday.",
+      "createdAt": "2026-11-09T03:10:00.000Z",
+      "read": true,
+      "sample": true
+    },
+    {
+      "id": 16,
+      "chatId": 6,
+      "senderId": 3,
+      "body": "Thank you! I'll pick it up after class.",
+      "createdAt": "2026-11-10T04:00:00.000Z",
+      "read": true,
+      "sample": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# UniSell is a single-page Expo web preview. The app is primarily distributed
+# as a mobile build; this file exists so the static web export does not return
+# a 404 for crawlers.

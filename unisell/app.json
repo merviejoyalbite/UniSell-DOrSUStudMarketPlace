@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "UniSell",
+    "slug": "unisell",
+    "scheme": "unisell",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#EAF6F3",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ph.edu.dorsu.unisell",
+      "buildNumber": "1"
+    },
+    "android": {
+      "package": "ph.edu.dorsu.unisell",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#1F7A72",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "name": "UniSell",
+      "lang": "en",
+      "themeColor": "#0E6A5F",
+      "description": "UniSell is the verified DOrSU student marketplace for buying, selling and reusing campus essentials."
+    },
+    "plugins": [
+      "expo-image",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow UniSell to access your photos so you can choose pictures of the item you are selling.",
+          "cameraPermission": "Allow UniSell to use your camera to photograph the item you are selling.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-unisell.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#EAF6F3",
+          "dark": {
+            "image": "./assets/splash-unisell.png",
+            "backgroundColor": "#0B1030"
+          }
+        }
+      ]
+    ]
+  }
+}

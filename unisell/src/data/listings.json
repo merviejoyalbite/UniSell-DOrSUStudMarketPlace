@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "title": "Calculus: Early Transcendentals (8th Edition)",
+    "description": "Stewart's 8th edition. Complete pages, no heavy annotations. Slight cover wear from daily use.",
+    "price": 450,
+    "category": "Textbooks",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/01-calculus-early-transcendentals-8th-edition.jpg",
+    "sellerId": 2,
+    "sellerName": "Jun Reyes",
+    "sellerCourse": "BSED",
+    "sellerYearLevel": "4th Year",
+    "meetupSpot": "Main Library Lobby",
+    "createdAt": "2026-10-21T09:15:00.000Z",
+    "images": [
+      "/images/01-calculus-early-transcendentals-8th-edition.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 2,
+    "title": "DOrSU PE Uniform (Medium)",
+    "description": "Official PE uniform, medium size. Washed and ready to wear. No stains or tears.",
+    "price": 250,
+    "category": "Uniforms",
+    "condition": "Used",
+    "status": "reserved",
+    "image": "/images/02-dorsu-pe-uniform-medium.jpg",
+    "sellerId": 1,
+    "sellerName": "Mika Santos",
+    "sellerCourse": "BSIT",
+    "sellerYearLevel": "3rd Year",
+    "meetupSpot": "PE Building Entrance",
+    "createdAt": "2026-10-20T14:40:00.000Z",
+    "images": [
+      "/images/02-dorsu-pe-uniform-medium.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 3,
+    "title": "TI-84 Plus CE Graphing Calculator",
+    "description": "Works perfectly, includes charging cable. Great for engineering and statistics subjects.",
+    "price": 1800,
+    "category": "Gadgets",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/03-ti-84-plus-ce-graphing-calculator.jpg",
+    "sellerId": 4,
+    "sellerName": "Carlo Mendoza",
+    "sellerCourse": "BSCS",
+    "sellerYearLevel": "2nd Year",
+    "meetupSpot": "IT Building Lobby",
+    "createdAt": "2026-10-19T10:05:00.000Z",
+    "images": [
+      "/images/03-ti-84-plus-ce-graphing-calculator.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 4,
+    "title": "Laboratory Gown (Small)",
+    "description": "Brand new lab gown, size small. Bought an extra one by mistake.",
+    "price": 300,
+    "category": "Uniforms",
+    "condition": "New",
+    "status": "sold",
+    "image": "/images/04-laboratory-gown-small.jpg",
+    "sellerId": 3,
+    "sellerName": "Ana Dela Cruz",
+    "sellerCourse": "BSBA",
+    "sellerYearLevel": "4th Year",
+    "meetupSpot": "Science Building",
+    "createdAt": "2026-10-18T16:20:00.000Z",
+    "images": [
+      "/images/04-laboratory-gown-small.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 5,
+    "title": "Homemade Brownies (Box of 6)",
+    "description": "Fudgy brownies baked on the same day. Perfect for study sessions. Order a day ahead.",
+    "price": 180,
+    "category": "Food",
+    "condition": "New",
+    "status": "available",
+    "image": "/images/05-homemade-brownies-box-of-6.jpg",
+    "sellerId": 1,
+    "sellerName": "Mika Santos",
+    "sellerCourse": "BSIT",
+    "sellerYearLevel": "3rd Year",
+    "meetupSpot": "Main Gate",
+    "createdAt": "2026-10-21T07:50:00.000Z",
+    "images": [
+      "/images/05-homemade-brownies-box-of-6.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 6,
+    "title": "Electric Fan (12 inch, dorm size)",
+    "description": "Quiet 12-inch desk fan with three speeds. Used for one semester only.",
+    "price": 550,
+    "category": "Dorm Items",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/06-electric-fan-12-inch-dorm-size.jpg",
+    "sellerId": 4,
+    "sellerName": "Carlo Mendoza",
+    "sellerCourse": "BSCS",
+    "sellerYearLevel": "2nd Year",
+    "meetupSpot": "Dormitory Gate",
+    "createdAt": "2026-10-20T18:10:00.000Z",
+    "images": [
+      "/images/06-electric-fan-12-inch-dorm-size.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 7,
+    "title": "Fundamentals of Nursing (11th Edition)",
+    "description": "Hardcover nursing textbook. Minimal highlighting on the first five chapters.",
+    "price": 620,
+    "category": "Textbooks",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/07-fundamentals-of-nursing-11th-edition.jpg",
+    "sellerId": 3,
+    "sellerName": "Ana Dela Cruz",
+    "sellerCourse": "BSBA",
+    "sellerYearLevel": "4th Year",
+    "meetupSpot": "Nursing Building",
+    "createdAt": "2026-10-19T13:35:00.000Z",
+    "images": [
+      "/images/07-fundamentals-of-nursing-11th-edition.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 8,
+    "title": "Casio fx-991EX Scientific Calculator",
+    "description": "Fully working with slide cover. Required model for most DOrSU math subjects.",
+    "price": 650,
+    "category": "Gadgets",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/08-casio-fx-991ex-scientific-calculator.jpg",
+    "sellerId": 3,
+    "sellerName": "Ana Dela Cruz",
+    "sellerCourse": "BSBA",
+    "sellerYearLevel": "4th Year",
+    "meetupSpot": "Admin Building",
+    "createdAt": "2026-10-17T11:25:00.000Z",
+    "images": [
+      "/images/08-casio-fx-991ex-scientific-calculator.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 9,
+    "title": "DOrSU Lanyard with ID Case",
+    "description": "New official-style DOrSU lanyard with a clear ID case. Two pieces available.",
+    "price": 60,
+    "category": "Others",
+    "condition": "New",
+    "status": "available",
+    "image": "/images/09-dorsu-lanyard-with-id-case.jpg",
+    "sellerId": 2,
+    "sellerName": "Jun Reyes",
+    "sellerCourse": "BSED",
+    "sellerYearLevel": "4th Year",
+    "meetupSpot": "Student Center",
+    "createdAt": "2026-10-21T12:00:00.000Z",
+    "images": [
+      "/images/09-dorsu-lanyard-with-id-case.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 10,
+    "title": "IT Fundamentals Review Notes (Photocopy)",
+    "description": "Complete photocopied review notes for IT Fundamentals. Clear print, bound with staples.",
+    "price": 120,
+    "category": "Textbooks",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/10-it-fundamentals-review-notes-photocopy.jpg",
+    "sellerId": 1,
+    "sellerName": "Mika Santos",
+    "sellerCourse": "BSIT",
+    "sellerYearLevel": "3rd Year",
+    "meetupSpot": "IT Building Lobby",
+    "createdAt": "2026-10-16T15:45:00.000Z",
+    "images": [
+      "/images/10-it-fundamentals-review-notes-photocopy.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 11,
+    "title": "Mini Rice Cooker (1.2L)",
+    "description": "Compact rice cooker with steamer tray. Clean and fully functional.",
+    "price": 700,
+    "category": "Dorm Items",
+    "condition": "Used",
+    "status": "reserved",
+    "image": "/images/11-mini-rice-cooker-1-2l.jpg",
+    "sellerId": 4,
+    "sellerName": "Carlo Mendoza",
+    "sellerCourse": "BSCS",
+    "sellerYearLevel": "2nd Year",
+    "meetupSpot": "Dormitory Gate",
+    "createdAt": "2026-10-15T09:30:00.000Z",
+    "images": [
+      "/images/11-mini-rice-cooker-1-2l.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 12,
+    "title": "Poster / Tarpaulin Printing (per sq ft)",
+    "description": "Affordable tarpaulin printing for org events and class projects. Same-day for small orders.",
+    "price": 25,
+    "category": "Others",
+    "condition": "New",
+    "status": "available",
+    "image": "/images/12-poster-tarpaulin-printing-per-sq-ft.jpg",
+    "sellerId": 2,
+    "sellerName": "Jun Reyes",
+    "sellerCourse": "BSED",
+    "sellerYearLevel": "4th Year",
+    "meetupSpot": "Student Center",
+    "createdAt": "2026-10-14T11:10:00.000Z",
+    "images": [
+      "/images/12-poster-tarpaulin-printing-per-sq-ft.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 13,
+    "title": "PE Shoes (Size 7, White)",
+    "description": "White rubber shoes, size 7. Lightly used for PE classes only.",
+    "price": 350,
+    "category": "Uniforms",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/13-pe-shoes-size-7-white.jpg",
+    "sellerId": 3,
+    "sellerName": "Ana Dela Cruz",
+    "sellerCourse": "BSBA",
+    "sellerYearLevel": "4th Year",
+    "meetupSpot": "Gymnasium",
+    "createdAt": "2026-10-13T16:55:00.000Z",
+    "images": [
+      "/images/13-pe-shoes-size-7-white.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 14,
+    "title": "Desk Lamp with USB Port",
+    "description": "Adjustable LED desk lamp with a USB charging port. Great for late-night reviews.",
+    "price": 220,
+    "category": "Dorm Items",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/14-desk-lamp-with-usb-port.jpg",
+    "sellerId": 1,
+    "sellerName": "Mika Santos",
+    "sellerCourse": "BSIT",
+    "sellerYearLevel": "3rd Year",
+    "meetupSpot": "Dormitory Gate",
+    "createdAt": "2026-10-12T20:05:00.000Z",
+    "images": [
+      "/images/14-desk-lamp-with-usb-port.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 15,
+    "title": "Arduino Uno Starter Kit",
+    "description": "Complete starter kit with breadboard, jumper wires, LEDs and sensors. Used once for a project.",
+    "price": 900,
+    "category": "Gadgets",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/15-arduino-uno-starter-kit.jpg",
+    "sellerId": 4,
+    "sellerName": "Carlo Mendoza",
+    "sellerCourse": "BSCS",
+    "sellerYearLevel": "2nd Year",
+    "meetupSpot": "IT Building Lobby",
+    "createdAt": "2026-10-11T14:00:00.000Z",
+    "images": [
+      "/images/15-arduino-uno-starter-kit.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 16,
+    "title": "Accounting Workbook (Brand New)",
+    "description": "Unused accounting workbook for first-year students. No writing or torn pages.",
+    "price": 280,
+    "category": "Textbooks",
+    "condition": "New",
+    "status": "available",
+    "image": "/images/16-accounting-workbook-brand-new.jpg",
+    "sellerId": 2,
+    "sellerName": "Jun Reyes",
+    "sellerCourse": "BSED",
+    "sellerYearLevel": "4th Year",
+    "meetupSpot": "College of Business",
+    "createdAt": "2026-10-10T10:40:00.000Z",
+    "images": [
+      "/images/16-accounting-workbook-brand-new.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 17,
+    "title": "Iced Coffee Beans (250g, Local Roast)",
+    "description": "Freshly roasted local coffee beans, medium grind. Sealed bag, good for iced coffee.",
+    "price": 320,
+    "category": "Food",
+    "condition": "New",
+    "status": "available",
+    "image": "/images/17-iced-coffee-beans-250g-local-roast.jpg",
+    "sellerId": 3,
+    "sellerName": "Ana Dela Cruz",
+    "sellerCourse": "BSBA",
+    "sellerYearLevel": "4th Year",
+    "meetupSpot": "Main Gate",
+    "createdAt": "2026-10-09T08:20:00.000Z",
+    "images": [
+      "/images/17-iced-coffee-beans-250g-local-roast.jpg"
+    ],
+    "imageType": "sample"
+  },
+  {
+    "id": 18,
+    "title": "Extension Cord (4 sockets, 3m)",
+    "description": "Heavy-duty extension cord with four sockets and a 3-metre cable. Tested and working.",
+    "price": 180,
+    "category": "Dorm Items",
+    "condition": "Used",
+    "status": "available",
+    "image": "/images/18-extension-cord-4-sockets-3m.jpg",
+    "sellerId": 4,
+    "sellerName": "Carlo Mendoza",
+    "sellerCourse": "BSCS",
+    "sellerYearLevel": "2nd Year",
+    "meetupSpot": "Dormitory Gate",
+    "createdAt": "2026-10-08T17:15:00.000Z",
+    "images": [
+      "/images/18-extension-cord-4-sockets-3m.jpg"
+    ],
+    "imageType": "sample"
+  }
+]

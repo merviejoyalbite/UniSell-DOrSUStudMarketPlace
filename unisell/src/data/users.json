@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Mika Santos",
+    "email": "mika.santos@dorsu.edu.ph",
+    "password": "unisell123",
+    "course": "BSIT",
+    "yearLevel": "3rd Year",
+    "studentId": "2022-0417"
+  },
+  {
+    "id": 2,
+    "name": "Jun Reyes",
+    "email": "jun.reyes@dorsu.edu.ph",
+    "password": "unisell123",
+    "course": "BSED",
+    "yearLevel": "4th Year",
+    "studentId": "2021-1180"
+  },
+  {
+    "id": 3,
+    "name": "Ana Dela Cruz",
+    "email": "ana.delacruz@dorsu.edu.ph",
+    "password": "unisell123",
+    "course": "BSBA",
+    "yearLevel": "4th Year",
+    "studentId": "2021-0932"
+  },
+  {
+    "id": 4,
+    "name": "Carlo Mendoza",
+    "email": "carlo.mendoza@dorsu.edu.ph",
+    "password": "unisell123",
+    "course": "BSCS",
+    "yearLevel": "2nd Year",
+    "studentId": "2023-0745"
+  }
+]
