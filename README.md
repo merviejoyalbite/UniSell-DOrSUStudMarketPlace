@@ -29,9 +29,8 @@ There's no cart and no online payment. We kept it simple on purpose.
 Library Entrance, Canteen, Admin Building, Gymnasium, Main Gate. Sellers choose which ones work for them.
 
 ## What we're using
-
-- Flutter (Dart) for the app
-- Firebase for login, database, and photos
+- OpenCode for vibe code
+- JSON for login, database, and photos
 - Figma for the design
 
 ## Design
