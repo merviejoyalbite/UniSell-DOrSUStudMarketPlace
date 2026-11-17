@@ -87,7 +87,7 @@ export function HomeScreen({ navigation }: MainTabScreenProps<'Home'>) {
   // Sold items leave the marketplace feed by default; they stay in
   // Profile > My listings > Sold for the owner.
   const availableListings = useMemo(
-    () => listings.filter((listing) => listing.status !== 'sold'),
+    () => listings,
     [listings],
   );
 
