@@ -273,6 +273,7 @@ export function ListingCard({
           style={[styles.heart, { transform: [{ scale: heartPop }] }]}
         >
           <RoundIconButton
+            variant="ghost"
             icon={isFavorite ? 'heart' : 'heart-outline'}
             iconColor={isFavorite ? colors.favorite : colors.textMuted}
             accessibilityLabel={
@@ -282,7 +283,6 @@ export function ListingCard({
             }
             onPress={onToggleFavorite}
             size={heartSize}
-            style={isFavorite ? { backgroundColor: 'transparent' } : undefined}
           />
         </Animated.View>
       ) : null}

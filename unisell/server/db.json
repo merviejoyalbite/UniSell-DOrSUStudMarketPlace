@@ -503,12 +503,12 @@
       "sellerCourse": "BSIT",
       "sellerYearLevel": "3rd Year",
       "meetupSpot": "Admin Building",
-      "status": "available",
+      "status": "sold",
       "createdAt": "2026-11-17T14:45:23.396Z",
-      "soldAt": null,
+      "soldAt": "2026-11-17T15:59:15.126Z",
       "imageType": null,
       "id": 21,
-      "updatedAt": "2026-11-17T15:28:14.695Z"
+      "updatedAt": "2026-11-17T15:59:15.126Z"
     }
   ],
   "reservations": [
@@ -846,7 +846,7 @@
       "target": "listing",
       "listingId": 20,
       "reservationId": 12,
-      "read": false,
+      "read": true,
       "createdAt": "2026-11-17T15:13:04.312Z",
       "sample": false,
       "id": 12
@@ -889,6 +889,19 @@
       "createdAt": "2026-11-17T15:42:41.654Z",
       "sample": false,
       "id": 15
+    },
+    {
+      "userId": 5,
+      "title": "Item marked as sold",
+      "detail": "Pajamas was handed over by Mervie Albite. You can now leave a review.",
+      "tone": "green",
+      "target": "review",
+      "listingId": 21,
+      "reservationId": null,
+      "read": false,
+      "createdAt": "2026-11-17T15:59:15.242Z",
+      "sample": false,
+      "id": 16
     }
   ],
   "reviews": [
