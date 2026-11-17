@@ -241,14 +241,36 @@ export function ListingsProvider({ children }: { children: ReactNode }) {
 
   const updateListingStatus = useCallback(
     async (id: number, status: ListingStatus) => {
-      const updated = await updateListingStatusRequest(id, status);
+      const current = state.listings.find((item) => item.id === id);
 
-      dispatch({ type: 'UPDATE_LISTING', listing: updated });
-      await refresh({ silent: true });
+      // Optimistic update so the status is visible immediately, even when the
+      // mock API is unreachable (e.g. the static web demo).
+      if (current) {
+        dispatch({
+          type: 'UPDATE_LISTING',
+          listing: {
+            ...current,
+            status,
+            soldAt: status === 'sold' ? new Date().toISOString() : null,
+            updatedAt: new Date().toISOString(),
+          },
+        });
+      }
 
-      return updated;
+      try {
+        const updated = await updateListingStatusRequest(id, status);
+        dispatch({ type: 'UPDATE_LISTING', listing: updated });
+        await refresh({ silent: true }).catch(() => undefined);
+        return updated;
+      } catch (error) {
+        // Revert on failure.
+        if (current) {
+          dispatch({ type: 'UPDATE_LISTING', listing: current });
+        }
+        throw error;
+      }
     },
-    [refresh],
+    [refresh, state.listings],
   );
 
   const deleteListings = useCallback(

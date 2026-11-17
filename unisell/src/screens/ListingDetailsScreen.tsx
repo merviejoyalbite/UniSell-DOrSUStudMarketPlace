@@ -580,7 +580,7 @@ export function ListingDetailsScreen({
           </View>
 
           {isOwner ? (
-            <View style={styles.ownerActions}>
+            <View style={[styles.ownerActions, isDesktop && styles.ownerActionsDesktop]}>
               <View style={styles.ownerNotice}>
                 <Ionicons
                   name="storefront-outline"
@@ -601,6 +601,8 @@ export function ListingDetailsScreen({
                     disabled={isActing}
                     loading={pendingAction === 'delete'}
                     onPress={confirmDelete}
+                    fullWidth={!isDesktop}
+                    style={isDesktop ? { flex: 1 } : undefined}
                   />
                   <AppButton
                     label="Mark as available again"
@@ -609,6 +611,8 @@ export function ListingDetailsScreen({
                     disabled={isActing}
                     loading={pendingAction === 'available'}
                     onPress={() => markStatus('available')}
+                    fullWidth={!isDesktop}
+                    style={isDesktop ? { flex: 1 } : undefined}
                   />
                 </>
               ) : (
@@ -620,6 +624,8 @@ export function ListingDetailsScreen({
                     disabled={isActing}
                     loading={pendingAction === 'sold'}
                     onPress={confirmMarkSold}
+                    fullWidth={!isDesktop}
+                    style={isDesktop ? { flex: 1 } : undefined}
                   />
                   {listing.status === 'reserved' ? (
                     <AppButton
@@ -629,6 +635,8 @@ export function ListingDetailsScreen({
                       disabled={isActing}
                       loading={pendingAction === 'available'}
                       onPress={() => markStatus('available')}
+                      fullWidth={!isDesktop}
+                      style={isDesktop ? { flex: 1 } : undefined}
                     />
                   ) : (
                     <AppButton
@@ -638,6 +646,8 @@ export function ListingDetailsScreen({
                       disabled={isActing}
                       loading={pendingAction === 'reserved'}
                       onPress={confirmMarkReserved}
+                      fullWidth={!isDesktop}
+                      style={isDesktop ? { flex: 1 } : undefined}
                     />
                   )}
                   <AppButton
@@ -646,6 +656,8 @@ export function ListingDetailsScreen({
                     variant="secondary"
                     disabled={isActing}
                     onPress={openEditForm}
+                    fullWidth={!isDesktop}
+                    style={isDesktop ? { flex: 1 } : undefined}
                   />
                   <AppButton
                     label="Delete listing"
@@ -654,6 +666,8 @@ export function ListingDetailsScreen({
                     disabled={isActing}
                     loading={pendingAction === 'delete'}
                     onPress={confirmDelete}
+                    fullWidth={!isDesktop}
+                    style={isDesktop ? { flex: 1 } : undefined}
                   />
                 </>
               )}
@@ -1100,6 +1114,10 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   ownerActions: {
     marginTop: spacing.xl,
     gap: spacing.sm,
+  },
+  ownerActionsDesktop: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   buyerActions: {
     marginTop: spacing.xl,

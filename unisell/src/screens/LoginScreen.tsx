@@ -219,8 +219,8 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   heroText: {
     marginTop: spacing.md,
     fontFamily: fonts.regular,
-    fontSize: fontSizes.md,
-    lineHeight: lineHeights.md,
+    fontSize: fontSizes.lg,
+    lineHeight: lineHeights.lg,
     color: colors.textMuted,
     textAlign: 'center',
   },

@@ -60,7 +60,7 @@ export function WelcomeHero() {
   const { width } = useWindowDimensions();
 
   const circleSize =
-    width >= 1024 ? 88 : width >= 768 ? 72 : width < 360 ? 56 : 64;
+    width >= 1024 ? 104 : width >= 768 ? 88 : width < 360 ? 64 : 76;
 
   return (
     <View
@@ -125,11 +125,11 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   stage: {
     position: 'relative',
     width: '100%',
-    maxWidth: 420,
+    maxWidth: 460,
     alignSelf: 'center',
     marginTop: spacing.lg,
-    marginBottom: spacing.xl,
-    paddingVertical: 10,
+    marginBottom: spacing.md,
+    paddingVertical: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -148,7 +148,7 @@ const useStyles = createThemedStyles((colors, shadows) => ({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 24,
+    gap: 20,
     flexWrap: 'wrap',
   },
   itemWrap: {
@@ -177,8 +177,8 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   label: {
     marginTop: 10,
     fontFamily: fonts.semibold,
-    fontSize: 15,
-    lineHeight: 18,
+    fontSize: 16,
+    lineHeight: 20,
     color: colors.text,
     textAlign: 'center',
   },
