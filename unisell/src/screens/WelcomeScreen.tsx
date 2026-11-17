@@ -56,11 +56,13 @@ function ValuePropCard({
   index,
   colors,
   isCompact,
+  isDesktop,
 }: {
   item: (typeof VALUE_PROPS)[number];
   index: number;
   colors: any;
   isCompact: boolean;
+  isDesktop: boolean;
 }) {
   const styles = useStyles();
   const [hovered, setHovered] = useState(false);
@@ -90,6 +92,7 @@ function ValuePropCard({
         onHoverOut={() => setHovered(false)}
         style={({ pressed }) => [
           styles.valueProp,
+          isDesktop ? { flex: 1 } : { width: '100%' },
           pressed && { opacity: 0.9 },
         ]}
       >
@@ -252,9 +255,9 @@ export function WelcomeScreen({ navigation }: RootStackScreenProps<'Welcome'>) {
   );
 
   const valueProps = (
-    <View style={styles.valueProps}>
+    <View style={[styles.valueProps, isDesktop ? styles.valuePropsDesktop : styles.valuePropsMobile]}>
       {VALUE_PROPS.map((item, index) => (
-        <ValuePropCard key={item.label} item={item} index={index} colors={colors} isCompact={isCompact} />
+        <ValuePropCard key={item.label} item={item} index={index} colors={colors} isCompact={isCompact} isDesktop={isDesktop} />
       ))}
     </View>
   );
@@ -400,8 +403,8 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   },
   heading: {
     fontFamily: fonts.bold,
-    fontSize: fontSizes.display,
-    lineHeight: lineHeights.display,
+    fontSize: 30,
+    lineHeight: 36,
     color: colors.text,
     marginBottom: spacing.md,
   },
@@ -417,12 +420,16 @@ const useStyles = createThemedStyles((colors, shadows) => ({
     maxWidth: 420,
   },
   valueProps: {
-    flexDirection: 'row',
     gap: spacing.sm,
     marginTop: spacing.xl,
   },
+  valuePropsDesktop: {
+    flexDirection: 'row',
+  },
+  valuePropsMobile: {
+    flexDirection: 'column',
+  },
   valueProp: {
-    flex: 1,
     minWidth: 0,
     alignItems: 'center',
     backgroundColor: colors.surface,
@@ -431,8 +438,8 @@ const useStyles = createThemedStyles((colors, shadows) => ({
     paddingVertical: spacing.md,
   },
   valueIcon: {
-    width: 34,
-    height: 34,
+    width: 40,
+    height: 40,
     borderRadius: radii.pill,
     alignItems: 'center',
     justifyContent: 'center',
@@ -493,14 +500,14 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   },
   footer: {
     fontFamily: fonts.medium,
-    fontSize: fontSizes.xs,
+    fontSize: 13,
     lineHeight: lineHeights.xs,
     color: colors.textMuted,
     textAlign: 'center',
   },
   fillButton: {
-    minHeight: 48,
-    borderRadius: radii.pill,
+    minHeight: 52,
+    borderRadius: 14,
     borderWidth: 1,
     borderColor: colors.primary,
     backgroundColor: colors.surface,
@@ -510,6 +517,7 @@ const useStyles = createThemedStyles((colors, shadows) => ({
     paddingVertical: spacing.md,
     overflow: 'hidden',
     position: 'relative',
+    width: '100%',
   },
   fillButtonFill: {
     position: 'absolute',
@@ -522,7 +530,7 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   },
   fillButtonText: {
     fontFamily: fonts.semibold,
-    fontSize: fontSizes.sm,
+    fontSize: 16,
     lineHeight: lineHeights.sm,
     color: colors.primary,
     textAlign: 'center',

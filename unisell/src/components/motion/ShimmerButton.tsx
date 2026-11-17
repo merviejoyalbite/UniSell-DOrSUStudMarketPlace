@@ -65,12 +65,14 @@ export function ShimmerButton({ label, icon, onPress, variant = 'primary', style
           justifyContent: 'center',
           gap: 8,
           paddingHorizontal: 20,
-          paddingVertical: 12,
-          borderRadius: 999,
+          paddingVertical: 14,
+          minHeight: 52,
+          borderRadius: 14,
           backgroundColor: bg,
           borderWidth: variant === 'secondary' ? 1 : 0,
           borderColor: border,
           overflow: 'hidden',
+          width: '100%',
         }}
       >
         {icon ? (
@@ -78,7 +80,7 @@ export function ShimmerButton({ label, icon, onPress, variant = 'primary', style
             <Ionicons name={icon} size={18} color={fg} />
           </Animated.View>
         ) : null}
-        <Text style={{ color: fg, fontWeight: '600', fontSize: 15 }}>{label}</Text>
+        <Text style={{ color: fg, fontWeight: '600', fontSize: 16 }}>{label}</Text>
         {hovered ? <ShimmerSweep width={40} duration={900} colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.35)', 'rgba(255,255,255,0)']} /> : null}
       </Animated.View>
     </Pressable>

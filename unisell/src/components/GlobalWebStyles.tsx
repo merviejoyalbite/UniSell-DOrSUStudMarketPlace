@@ -15,6 +15,8 @@ export function GlobalWebStyles() {
     const style = document.createElement('style');
     style.id = id;
     style.textContent =
+      'html, body, #root { min-height: 100dvh; margin: 0; } ' +
+      'body { overflow-x: hidden; } ' +
       'input, textarea { outline: none !important; box-shadow: none !important; }';
     document.head.appendChild(style);
     return () => {

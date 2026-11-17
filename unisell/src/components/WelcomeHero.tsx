@@ -177,8 +177,8 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   label: {
     marginTop: 10,
     fontFamily: fonts.semibold,
-    fontSize: 16,
-    lineHeight: 20,
+    fontSize: 14,
+    lineHeight: 18,
     color: colors.text,
     textAlign: 'center',
   },
