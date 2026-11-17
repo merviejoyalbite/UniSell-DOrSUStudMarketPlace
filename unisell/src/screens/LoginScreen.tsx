@@ -44,7 +44,7 @@ export function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
 
   const updateEmail = (value: string) => {
     setEmail(value);
