@@ -164,6 +164,51 @@ export async function ensureChat(listingId: number): Promise<Chat> {
 }
 
 /**
+ * Find or create the chat thread for a listing + buyer, from either side of
+ * the conversation. Used by the seller after accepting a reserve request so
+ * they can message the buyer directly.
+ *
+ * Unlike `ensureChat` (buyer-only), this works for sellers too: it looks up an
+ * existing thread matching listingId+buyerId+sellerId and creates one if none
+ * exists yet. Only listingId/buyerId/sellerId are required; the listing
+ * snapshot is fetched from the server.
+ */
+export async function findOrCreateChatForListing({
+  listingId,
+  buyerId,
+  sellerId,
+}: {
+  listingId: number;
+  buyerId: number;
+  sellerId: number;
+}): Promise<Chat> {
+  const listing = await apiClient.get<Listing>(`/listings/${listingId}`);
+
+  const existing = await apiClient.get<Chat[]>(
+    `/chats?listingId=${listingId}&buyerId=${buyerId}&sellerId=${sellerId}`,
+  );
+  if (existing.length > 0) return existing[0];
+
+  const now = new Date().toISOString();
+
+  return apiClient.post<Chat>('/chats', {
+    listingId,
+    buyerId,
+    sellerId,
+    buyerName: '',
+    sellerName: listing.sellerName,
+    listingTitle: listing.title,
+    listingPrice: listing.price,
+    listingImage: listing.image ?? listing.images?.[0] ?? null,
+    listingCategory: listing.category,
+    listingStatus: listing.status,
+    createdAt: now,
+    updatedAt: now,
+    sample: false,
+  });
+}
+
+/**
  * Send one message and bump the thread so it floats to the top of both inboxes.
  *
  * The message starts unread for the recipient; opening the chat marks every

@@ -18,6 +18,7 @@ import { useMessages } from '../context/MessagesContext';
 import { useReservations } from '../context/ReservationsContext';
 import { useReviews } from '../context/ReviewsContext';
 import { useToast } from '../context/ToastContext';
+import { findOrCreateChatForListing } from '../api/messagesApi';
 import type { RootStackScreenProps } from '../navigation/types';
 import {
   createThemedStyles,
@@ -282,11 +283,22 @@ export function ListingDetailsScreen({
     if (processingReserve.has(reservationId)) return;
     setProcessingReserve((prev) => new Set([...prev, reservationId]));
     void acceptReservation(reservationId)
-      .then(() => {
+      .then(async () => {
         showToast(
           `Accepted ${reservation.buyerName}'s request — ${reservation.listingTitle}`,
         );
         void refreshReservations({ silent: true }).catch(() => undefined);
+        // Open a chat with the buyer so they can coordinate the meetup.
+        try {
+          const chat = await findOrCreateChatForListing({
+            listingId: reservation.listingId,
+            buyerId: reservation.buyerId,
+            sellerId: user!.id,
+          });
+          navigation.navigate('Chat', { chatId: chat.id });
+        } catch (chatErr) {
+          console.warn('Could not open chat after accepting:', chatErr);
+        }
       })
       .catch((err: unknown) => {
         setActionError(

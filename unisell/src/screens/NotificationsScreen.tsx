@@ -15,6 +15,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNotifications } from '../context/NotificationsContext';
 import { useReservations } from '../context/ReservationsContext';
 import { useToast } from '../context/ToastContext';
+import { findOrCreateChatForListing } from '../api/messagesApi';
 import type { RootStackScreenProps } from '../navigation/types';
 import {
   createThemedStyles,
@@ -238,6 +239,17 @@ export function NotificationsScreen({
       showToast(
         `Accepted ${reservation.buyerName}'s request — ${reservation.listingTitle}`,
       );
+      // Open a chat with the buyer so they can coordinate the meetup.
+      try {
+        const chat = await findOrCreateChatForListing({
+          listingId: reservation.listingId,
+          buyerId: reservation.buyerId,
+          sellerId: user!.id,
+        });
+        navigation.navigate('Chat', { chatId: chat.id });
+      } catch (chatErr) {
+        console.warn('Could not open chat after accepting:', chatErr);
+      }
     } catch (acceptError) {
       setActionError(
         acceptError instanceof Error
