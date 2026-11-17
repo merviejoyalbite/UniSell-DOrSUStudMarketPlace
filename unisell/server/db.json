@@ -478,12 +478,12 @@
       "sellerCourse": "BSIT",
       "sellerYearLevel": "3rd Year",
       "meetupSpot": "Student Center",
-      "status": "reserved",
+      "status": "available",
       "createdAt": "2026-11-17T12:07:08.421Z",
       "soldAt": null,
       "imageType": null,
       "id": 20,
-      "updatedAt": "2026-11-17T15:13:51.771Z"
+      "updatedAt": "2026-11-17T15:25:52.422Z"
     },
     {
       "title": "Pajamas",
@@ -503,12 +503,12 @@
       "sellerCourse": "BSIT",
       "sellerYearLevel": "3rd Year",
       "meetupSpot": "Admin Building",
-      "status": "reserved",
+      "status": "available",
       "createdAt": "2026-11-17T14:45:23.396Z",
       "soldAt": null,
       "imageType": null,
       "id": 21,
-      "updatedAt": "2026-11-17T15:06:47.339Z"
+      "updatedAt": "2026-11-17T15:28:14.695Z"
     }
   ],
   "reservations": [
@@ -673,12 +673,12 @@
       "buyerCourse": "BSIT",
       "buyerYearLevel": "3rd Year",
       "listingTitle": "Pajamas",
-      "status": "pending",
+      "status": "accepted",
       "meetupSpot": "Admin Building",
       "meetupAt": "2026-11-20T06:00:00.000Z",
       "note": "Mine please",
       "createdAt": "2026-11-17T14:46:32.507Z",
-      "updatedAt": "2026-11-17T14:46:32.507Z",
+      "updatedAt": "2026-11-17T15:26:01.687Z",
       "sample": false,
       "id": 11
     },
@@ -846,6 +846,19 @@
       "createdAt": "2026-11-17T15:13:51.919Z",
       "sample": false,
       "id": 13
+    },
+    {
+      "userId": 5,
+      "title": "Your reserve was accepted",
+      "detail": "Mervie Albite accepted your Pajamas request.",
+      "tone": "green",
+      "target": "listing",
+      "listingId": 21,
+      "reservationId": null,
+      "read": true,
+      "createdAt": "2026-11-17T15:26:01.737Z",
+      "sample": false,
+      "id": 14
     }
   ],
   "reviews": [

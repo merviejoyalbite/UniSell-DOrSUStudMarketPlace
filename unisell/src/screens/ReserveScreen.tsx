@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { CommonActions } from '@react-navigation/native';
 import { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { AppButton } from '../components/AppButton';
@@ -181,7 +182,14 @@ export function ReserveScreen({
           </Text>
           <AppButton
             label="Back to home"
-            onPress={() => navigation.navigate('Main', { screen: 'Home' })}
+            onPress={() =>
+              navigation.dispatch(
+                CommonActions.reset({
+                  index: 0,
+                  routes: [{ name: 'Main', params: { screen: 'Home' } }],
+                })
+              )
+            }
             fullWidth
           />
           <Pressable

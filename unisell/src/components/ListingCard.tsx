@@ -286,6 +286,7 @@ export function ListingCard({
             }
             onPress={onToggleFavorite}
             size={heartSize}
+            style={isFavorite ? { backgroundColor: 'transparent' } : undefined}
           />
         </Animated.View>
       ) : null}
@@ -373,6 +374,7 @@ const useStyles = createThemedStyles((colors, shadows) => ({
     top: spacing.sm,
     right: spacing.sm,
     zIndex: 2,
+    padding: 3,
   },
   heartActive: {
     backgroundColor: colors.favoriteSoft,
