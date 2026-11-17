@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { AppButton } from '../components/AppButton';
 import { BrandMark } from '../components/BrandMark';
 import { ErrorBanner } from '../components/ErrorBanner';
@@ -44,6 +44,7 @@ export function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const updateEmail = (value: string) => {
     setEmail(value);
@@ -70,7 +71,7 @@ export function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
 
     setIsSubmitting(true);
     try {
-      await signIn(email, password);
+      await signIn(email, password, rememberMe);
     } catch (error) {
       setFormError(
         error instanceof Error ? error.message : 'Login failed. Please try again.',
@@ -158,6 +159,20 @@ export function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
                 onPress: () => navigation.navigate('ForgotPassword'),
               }}
             />
+
+            <Pressable
+              accessibilityRole="button"
+              accessibilityState={{ checked: rememberMe }}
+              onPress={() => setRememberMe((value) => !value)}
+              style={styles.rememberRow}
+            >
+              <Ionicons
+                name={rememberMe ? 'checkbox' : 'square-outline'}
+                size={20}
+                color={rememberMe ? colors.primary : colors.textMuted}
+              />
+              <Text style={styles.rememberLabel}>Remember me on this device</Text>
+            </Pressable>
 
             <AppButton
               label={isSubmitting ? 'Logging in…' : 'Log in'}
@@ -268,6 +283,18 @@ const useStyles = createThemedStyles((colors, shadows) => ({
     color: colors.textMuted,
     marginTop: spacing.xs,
     marginBottom: spacing.xl,
+  },
+  rememberRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    marginBottom: spacing.lg,
+  },
+  rememberLabel: {
+    fontFamily: fonts.regular,
+    fontSize: fontSizes.sm,
+    lineHeight: lineHeights.sm,
+    color: colors.text,
   },
   divider: {
     flexDirection: 'row',

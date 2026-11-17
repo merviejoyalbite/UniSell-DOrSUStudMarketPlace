@@ -416,6 +416,8 @@ export interface AuthState {
   user: User | null;
   status: AuthStatus;
   error: string | null;
+  /** Whether the session was explicitly saved ("Remember me"). */
+  remembered: boolean;
 }
 
 export type ListingsStatus = 'idle' | 'loading' | 'ready' | 'error';

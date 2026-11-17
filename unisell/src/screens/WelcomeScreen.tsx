@@ -92,7 +92,7 @@ function ValuePropCard({
         onHoverOut={() => setHovered(false)}
         style={({ pressed }) => [
           styles.valueProp,
-          isDesktop ? { flex: 1 } : { width: '100%' },
+          { flex: 1 },
           pressed && { opacity: 0.9 },
         ]}
       >
@@ -255,7 +255,7 @@ export function WelcomeScreen({ navigation }: RootStackScreenProps<'Welcome'>) {
   );
 
   const valueProps = (
-    <View style={[styles.valueProps, isDesktop ? styles.valuePropsDesktop : styles.valuePropsMobile]}>
+    <View style={styles.valueProps}>
       {VALUE_PROPS.map((item, index) => (
         <ValuePropCard key={item.label} item={item} index={index} colors={colors} isCompact={isCompact} isDesktop={isDesktop} />
       ))}
@@ -420,16 +420,12 @@ const useStyles = createThemedStyles((colors, shadows) => ({
     maxWidth: 420,
   },
   valueProps: {
+    flexDirection: 'row',
     gap: spacing.sm,
     marginTop: spacing.xl,
   },
-  valuePropsDesktop: {
-    flexDirection: 'row',
-  },
-  valuePropsMobile: {
-    flexDirection: 'column',
-  },
   valueProp: {
+    flex: 1,
     minWidth: 0,
     alignItems: 'center',
     backgroundColor: colors.surface,

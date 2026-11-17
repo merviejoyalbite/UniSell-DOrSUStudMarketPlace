@@ -36,7 +36,7 @@ import { clearSession, loadSession, saveSession } from '../utils/storage';
 
 type AuthAction =
   | { type: 'RESTORE_SESSION'; user: User | null }
-  | { type: 'AUTH_SUCCESS'; user: User }
+  | { type: 'AUTH_SUCCESS'; user: User; remembered?: boolean }
   | { type: 'AUTH_ERROR'; message: string }
   | { type: 'CLEAR_ERROR' }
   | { type: 'SIGN_OUT' };
@@ -45,6 +45,7 @@ const initialState: AuthState = {
   user: null,
   status: 'loading',
   error: null,
+  remembered: false,
 };
 
 function authReducer(state: AuthState, action: AuthAction): AuthState {
@@ -54,26 +55,28 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
         user: action.user,
         status: action.user ? 'signedIn' : 'signedOut',
         error: null,
+        remembered: Boolean(action.user),
       };
     case 'AUTH_SUCCESS':
       return {
         user: action.user,
         status: 'signedIn',
         error: null,
+        remembered: action.remembered ?? false,
       };
     case 'AUTH_ERROR':
       return { ...state, error: action.message };
     case 'CLEAR_ERROR':
       return { ...state, error: null };
     case 'SIGN_OUT':
-      return { user: null, status: 'signedOut', error: null };
+      return { user: null, status: 'signedOut', error: null, remembered: false };
     default:
       return state;
   }
 }
 
 interface AuthContextValue extends AuthState {
-  signIn: (email: string, password: string) => Promise<void>;
+  signIn: (email: string, password: string, remember?: boolean) => Promise<void>;
   signUp: (input: SignUpInput) => Promise<void>;
   signOut: () => Promise<void>;
   /** PATCH the signed-in user and persist the updated session. */
@@ -104,12 +107,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  const signIn = useCallback(async (email: string, password: string) => {
+  const signIn = useCallback(async (email: string, password: string, remember = false) => {
     dispatch({ type: 'CLEAR_ERROR' });
     try {
       const user = await loginWithEmail(email, password);
-      await saveSession(user);
-      dispatch({ type: 'AUTH_SUCCESS', user });
+      if (remember) {
+        await saveSession(user);
+      } else {
+        await clearSession();
+      }
+      dispatch({ type: 'AUTH_SUCCESS', user, remembered: remember });
     } catch (error) {
       const message =
         error instanceof Error ? error.message : 'Login failed. Please try again.';
@@ -143,9 +150,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (!currentUser) throw new Error(NOT_SIGNED_IN_ERROR);
 
       const updated = await updateProfileRequest(currentUser.id, input);
-      // Persist immediately so the new name/photo survive an app restart.
-      await saveSession(updated);
-      dispatch({ type: 'AUTH_SUCCESS', user: updated });
+      if (state.remembered) {
+        await saveSession(updated);
+      }
+      dispatch({ type: 'AUTH_SUCCESS', user: updated, remembered: state.remembered });
       return updated;
     },
     [state.user],
