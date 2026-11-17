@@ -191,6 +191,7 @@ export function ReserveScreen({
               )
             }
             fullWidth
+            labelStyle={{ textAlign: 'center' }}
           />
           <Pressable
             accessibilityRole="link"

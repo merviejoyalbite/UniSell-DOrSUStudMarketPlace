@@ -480,12 +480,12 @@
       "sellerCourse": "BSIT",
       "sellerYearLevel": "3rd Year",
       "meetupSpot": "Science Building",
-      "status": "reserved",
+      "status": "available",
       "createdAt": "2026-11-17T16:13:48.365Z",
       "soldAt": null,
       "imageType": null,
       "id": 19,
-      "updatedAt": "2026-11-17T16:15:16.725Z"
+      "updatedAt": "2026-11-17T16:36:15.643Z"
     }
   ],
   "reservations": [
@@ -709,6 +709,23 @@
       "updatedAt": "2026-11-17T16:15:16.725Z",
       "sample": false,
       "id": 14
+    },
+    {
+      "listingId": 19,
+      "buyerId": 5,
+      "sellerId": 6,
+      "buyerName": "McLloyd Porio Duazo",
+      "buyerCourse": "BSIT",
+      "buyerYearLevel": "3rd Year",
+      "listingTitle": "ggghhj",
+      "status": "pending",
+      "meetupSpot": "Science Building",
+      "meetupAt": "2026-11-20T06:00:00.000Z",
+      "note": "",
+      "createdAt": "2026-11-17T16:36:52.393Z",
+      "updatedAt": "2026-11-17T16:36:52.393Z",
+      "sample": false,
+      "id": 15
     }
   ],
   "notifications": [
@@ -892,7 +909,7 @@
       "target": "review",
       "listingId": 21,
       "reservationId": null,
-      "read": false,
+      "read": true,
       "createdAt": "2026-11-17T15:59:15.242Z",
       "sample": false,
       "id": 16
@@ -922,6 +939,19 @@
       "createdAt": "2026-11-17T16:15:16.897Z",
       "sample": false,
       "id": 18
+    },
+    {
+      "userId": 6,
+      "title": "McLloyd Porio Duazo sent a reserve request",
+      "detail": "Review the requested meetup details.",
+      "tone": "teal",
+      "target": "listing",
+      "listingId": 19,
+      "reservationId": 15,
+      "read": false,
+      "createdAt": "2026-11-17T16:36:52.448Z",
+      "sample": false,
+      "id": 19
     }
   ],
   "reviews": [
@@ -1116,7 +1146,7 @@
       "listingCategory": "Others",
       "listingStatus": "available",
       "createdAt": "2026-11-17T15:46:58.611Z",
-      "updatedAt": "2026-11-17T15:46:58.611Z",
+      "updatedAt": "2026-11-17T16:38:16.520Z",
       "sample": false,
       "id": 12
     }
@@ -1325,9 +1355,18 @@
       "senderId": 7,
       "body": "Is this still available?",
       "createdAt": "2026-11-17T15:18:04.996Z",
-      "read": false,
+      "read": true,
       "sample": false,
       "id": 23
+    },
+    {
+      "chatId": 12,
+      "senderId": 6,
+      "body": "Can you lower the price?",
+      "createdAt": "2026-11-17T16:38:16.520Z",
+      "read": false,
+      "sample": false,
+      "id": 24
     }
   ]
 }
