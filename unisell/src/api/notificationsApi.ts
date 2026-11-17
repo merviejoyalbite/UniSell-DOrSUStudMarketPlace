@@ -110,6 +110,7 @@ export async function createNotification(
   return apiClient.post<AppNotification>('/notifications', {
     ...input,
     listingId: input.listingId ?? null,
+    reservationId: input.reservationId ?? null,
     read: false,
     createdAt: new Date().toISOString(),
     sample: false,

@@ -155,6 +155,7 @@ export async function createReservation(
     tone: 'teal',
     target: 'listing',
     listingId: listing.id,
+    reservationId: reservation.id,
   });
 
   return reservation;

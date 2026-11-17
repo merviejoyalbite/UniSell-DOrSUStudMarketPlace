@@ -13,6 +13,7 @@ import { RoundIconButton } from '../components/RoundIconButton';
 import { ScreenContainer } from '../components/ScreenContainer';
 import { useAuth } from '../context/AuthContext';
 import { useNotifications } from '../context/NotificationsContext';
+import { useReservations } from '../context/ReservationsContext';
 import { useToast } from '../context/ToastContext';
 import type { RootStackScreenProps } from '../navigation/types';
 import {
@@ -25,7 +26,7 @@ import {
   useTheme,
   type ThemeColors,
 } from '../theme';
-import type { AppNotification, NotificationTone } from '../types';
+import type { AppNotification, NotificationTone, Reservation } from '../types';
 
 interface ToneStyle {
   color: string;
@@ -135,9 +136,12 @@ export function NotificationsScreen({
     markAsRead,
     markAllAsRead,
   } = useNotifications();
+  const { reservations, acceptReservation, declineReservation } =
+    useReservations();
 
   const [markingAll, setMarkingAll] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
+  const [processing, setProcessing] = useState<Set<number>>(new Set());
 
   // Pick up notifications created while this screen was closed. Silent so the
   // cached list stays visible instead of flashing a spinner.
@@ -206,6 +210,75 @@ export function NotificationsScreen({
     }
   }
 
+  /** Is this card a seller-side pending reserve request? */
+  function isReserveRequest(notification: AppNotification): boolean {
+    return (
+      Boolean(notification.reservationId) &&
+      notification.tone === 'teal' &&
+      /reserve request/i.test(notification.title)
+    );
+  }
+
+  /** The reservation behind a reserve-request notification, if loaded. */
+  function reservationFor(notification: AppNotification): Reservation | undefined {
+    if (!notification.reservationId) return undefined;
+    return reservations.find((r) => r.id === notification.reservationId);
+  }
+
+  async function handleAcceptReserve(notification: AppNotification) {
+    const reservation = reservationFor(notification);
+    if (!reservation) return;
+    if (processing.has(reservation.id)) return;
+
+    setProcessing((prev) => new Set([...prev, reservation.id]));
+    setActionError(null);
+    try {
+      await acceptReservation(reservation.id);
+      await refresh({ silent: true }).catch(() => undefined);
+      showToast(
+        `Accepted ${reservation.buyerName}'s request — ${reservation.listingTitle}`,
+      );
+    } catch (acceptError) {
+      setActionError(
+        acceptError instanceof Error
+          ? acceptError.message
+          : 'Could not accept the reserve request.',
+      );
+    } finally {
+      setProcessing((prev) => {
+        const next = new Set(prev);
+        next.delete(reservation.id);
+        return next;
+      });
+    }
+  }
+
+  async function handleDeclineReserve(notification: AppNotification) {
+    const reservation = reservationFor(notification);
+    if (!reservation) return;
+    if (processing.has(reservation.id)) return;
+
+    setProcessing((prev) => new Set([...prev, reservation.id]));
+    setActionError(null);
+    try {
+      await declineReservation(reservation.id);
+      await refresh({ silent: true }).catch(() => undefined);
+      showToast(`Declined ${reservation.buyerName}'s request`);
+    } catch (declineError) {
+      setActionError(
+        declineError instanceof Error
+          ? declineError.message
+          : 'Could not decline the reserve request.',
+      );
+    } finally {
+      setProcessing((prev) => {
+        const next = new Set(prev);
+        next.delete(reservation.id);
+        return next;
+      });
+    }
+  }
+
   async function handleMarkAllAsRead() {
     if (markingAll || unreadCount === 0) return;
 
@@ -228,6 +301,15 @@ export function NotificationsScreen({
 
   function renderCard(notification: AppNotification) {
     const tone = notificationTone(notification.tone, colors);
+    const isReserve = isReserveRequest(notification);
+    const reservation = isReserve ? reservationFor(notification) : undefined;
+    const processingThis = reservation
+      ? processing.has(reservation.id)
+      : false;
+
+    const reserveDetail = isReserve && reservation
+      ? `Meet ${reservation.buyerName} (${reservation.buyerCourse} ${reservation.buyerYearLevel}) at ${new Date(reservation.meetupAt).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}`
+      : notification.detail;
 
     return (
       <Pressable
@@ -238,7 +320,9 @@ export function NotificationsScreen({
         }. ${formatNotificationTime(notification.createdAt)}${
           notification.read ? '' : '. New'
         }`}
-        onPress={() => openNotification(notification)}
+        onPress={() => {
+          if (!isReserve) openNotification(notification);
+        }}
         style={({ pressed }) => [
           styles.card,
           !notification.read && styles.cardUnread,
@@ -253,18 +337,51 @@ export function NotificationsScreen({
 
         <View style={styles.cardBody}>
           <Text style={styles.cardTitle}>{displayTitle(notification)}</Text>
-          <Text style={styles.cardDetail}>{notification.detail}</Text>
+          <Text style={styles.cardDetail}>{reserveDetail}</Text>
           <Text style={styles.cardTime}>
             {formatNotificationTime(notification.createdAt)}
             {notification.read ? '' : <Text style={styles.newLabel}> · New</Text>}
           </Text>
         </View>
 
-        <Ionicons
-          name="chevron-forward"
-          size={18}
-          color={colors.textMuted}
-        />
+        {isReserve ? (
+          <View style={styles.reserveActions}>
+            <Pressable
+              onStartShouldSetResponder={() => true}
+              onPress={() => void handleAcceptReserve(notification)}
+              disabled={processingThis}
+              style={[
+                styles.actionButton,
+                styles.acceptButton,
+                processingThis && styles.actionDisabled,
+              ]}
+            >
+              <Text style={[styles.actionText, styles.acceptText]}>
+                {processingThis ? 'Accepting…' : 'Accept'}
+              </Text>
+            </Pressable>
+            <Pressable
+              onStartShouldSetResponder={() => true}
+              onPress={() => void handleDeclineReserve(notification)}
+              disabled={processingThis}
+              style={[
+                styles.actionButton,
+                styles.declineButton,
+                processingThis && styles.actionDisabled,
+              ]}
+            >
+              <Text style={[styles.actionText, styles.declineText]}>
+                {processingThis ? 'Declining…' : 'Decline'}
+              </Text>
+            </Pressable>
+          </View>
+        ) : (
+          <Ionicons
+            name="chevron-forward"
+            size={18}
+            color={colors.textMuted}
+          />
+        )}
       </Pressable>
     );
   }
@@ -488,6 +605,40 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   newLabel: {
     fontFamily: fonts.semibold,
     color: colors.primary,
+  },
+  reserveActions: {
+    flexDirection: 'row',
+    gap: 6,
+  },
+  actionButton: {
+    minHeight: 28,
+    minWidth: 70,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  acceptButton: {
+    backgroundColor: colors.success,
+  },
+  declineButton: {
+    backgroundColor: colors.textMuted,
+  },
+  actionDisabled: {
+    opacity: 0.5,
+  },
+  actionText: {
+    fontFamily: fonts.semibold,
+    fontSize: fontSizes.xs,
+    lineHeight: lineHeights.xs,
+    color: colors.background,
+  },
+  acceptText: {
+    color: colors.background,
+  },
+  declineText: {
+    color: colors.background,
   },
   pressed: {
     opacity: 0.75,

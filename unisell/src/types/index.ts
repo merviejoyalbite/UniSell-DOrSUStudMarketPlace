@@ -241,6 +241,8 @@ export interface AppNotification {
   target: NotificationTarget;
   /** Listing opened for `target: 'listing'`. */
   listingId?: number | null;
+  /** Reserve request this notification is about (seller-side accept/decline). */
+  reservationId?: number | null;
   createdAt: string;
   read: boolean;
   /** Seed/demo rows are marked so they can be reset. */
@@ -255,6 +257,8 @@ export interface NewNotificationInput {
   tone: NotificationTone;
   target: NotificationTarget;
   listingId?: number | null;
+  /** Reserve request this notification is about (seller-side accept/decline). */
+  reservationId?: number | null;
 }
 
 export type NotificationsStatus = 'idle' | 'loading' | 'ready' | 'error';
