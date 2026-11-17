@@ -202,7 +202,7 @@ export function SearchScreen({ navigation }: MainTabScreenProps<'Search'>) {
             onToggleFavorite={() => toggleFavorite(item.id)}
             style={[
               styles.card,
-              { maxWidth: '100%', marginBottom: gridGap },
+              { maxWidth: columns > 1 ? '50%' : '100%', marginBottom: gridGap },
             ]}
           />
         )}

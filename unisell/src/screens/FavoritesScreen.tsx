@@ -201,7 +201,7 @@ export function FavoritesScreen({ navigation }: MainTabScreenProps<'Favorites'>)
             onToggleFavorite={() => toggleFavorite(item.id)}
             style={[
               styles.card,
-              { maxWidth: '100%', marginBottom: gridGap },
+              { maxWidth: columns > 1 ? '50%' : '100%', marginBottom: gridGap },
             ]}
           />
         )}
