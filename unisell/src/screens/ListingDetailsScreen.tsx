@@ -80,7 +80,7 @@ export function ListingDetailsScreen({
     updateListingStatus,
     deleteListing,
   } = useListings();
-  const { reservations, cancelReservation, refresh: refreshReservations } = useReservations();
+  const { reservations, cancelReservation, acceptReservation, declineReservation, refresh: refreshReservations } = useReservations();
 
   // Keep reservations fresh so a declined/cancelled request frees the Reserve
   // button again when the buyer returns to this listing.
@@ -96,6 +96,7 @@ export function ListingDetailsScreen({
   const [actionError, setActionError] = useState<string | null>(null);
   const [cancellingReservation, setCancellingReservation] = useState(false);
   const [openingChat, setOpeningChat] = useState(false);
+  const [processingReserve, setProcessingReserve] = useState<Set<number>>(new Set());
   const lastAction = useRef<LastAction | null>(null);
 
   const listing = listings.find((item) => item.id === route.params.listingId);
@@ -113,6 +114,18 @@ export function ListingDetailsScreen({
             reservation.buyerId === user.id &&
             (reservation.status === 'pending' ||
               reservation.status === 'accepted'),
+        )
+      : undefined;
+
+  // The pending reserve request from a buyer on this listing, shown to the
+  // seller so they can accept or decline it directly on the item detail screen.
+  const sellerPendingReservation =
+    listing && user && isOwner
+      ? reservations.find(
+          (reservation) =>
+            reservation.listingId === listing.id &&
+            reservation.sellerId === user.id &&
+            reservation.status === 'pending',
         )
       : undefined;
 
@@ -261,6 +274,56 @@ export function ListingDetailsScreen({
         { text: 'Mark as reserved', onPress: () => markStatus('reserved') },
       ],
     );
+  }
+
+  function handleAcceptReserve(reservationId: number) {
+    const reservation = reservations.find((r) => r.id === reservationId);
+    if (!reservation) return;
+    if (processingReserve.has(reservationId)) return;
+    setProcessingReserve((prev) => new Set([...prev, reservationId]));
+    void acceptReservation(reservationId)
+      .then(() => {
+        showToast(
+          `Accepted ${reservation.buyerName}'s request — ${reservation.listingTitle}`,
+        );
+        void refreshReservations({ silent: true }).catch(() => undefined);
+      })
+      .catch((err: unknown) => {
+        setActionError(
+          err instanceof Error ? err.message : 'Could not accept reserve request.',
+        );
+      })
+      .finally(() => {
+        setProcessingReserve((prev) => {
+          const next = new Set(prev);
+          next.delete(reservationId);
+          return next;
+        });
+      });
+  }
+
+  function handleDeclineReserve(reservationId: number) {
+    const reservation = reservations.find((r) => r.id === reservationId);
+    if (!reservation) return;
+    if (processingReserve.has(reservationId)) return;
+    setProcessingReserve((prev) => new Set([...prev, reservationId]));
+    void declineReservation(reservationId)
+      .then(() => {
+        showToast(`Declined ${reservation.buyerName}'s request`);
+        void refreshReservations({ silent: true }).catch(() => undefined);
+      })
+      .catch((err: unknown) => {
+        setActionError(
+          err instanceof Error ? err.message : 'Could not decline reserve request.',
+        );
+      })
+      .finally(() => {
+        setProcessingReserve((prev) => {
+          const next = new Set(prev);
+          next.delete(reservationId);
+          return next;
+        });
+      });
   }
 
   function confirmDelete() {
@@ -601,7 +664,66 @@ export function ListingDetailsScreen({
                 </Text>
               </View>
 
-              {listing.status === 'sold' ? (
+                                {/* Pending reserve request from a buyer — seller can accept/decline directly */}
+                  {sellerPendingReservation ? (
+                    <View style={styles.reserveRequestCard}>
+                      <View style={styles.reserveRequestBody}>
+                        <Text style={styles.reserveRequestTitle}>
+                          {sellerPendingReservation.buyerName} wants to reserve this item
+                        </Text>
+                        <Text style={styles.reserveRequestDetail}>
+                          {sellerPendingReservation.buyerCourse} • {sellerPendingReservation.buyerYearLevel}
+                        </Text>
+                        <Text style={styles.reserveRequestDetail}>
+                          Meetup: {sellerPendingReservation.meetupSpot} •
+                          {new Date(sellerPendingReservation.meetupAt).toLocaleString(
+                            undefined,
+                            { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' },
+                          )}
+                        </Text>
+                      </View>
+                      <View style={styles.reserveRequestActions}>
+                        <Pressable
+                          onStartShouldSetResponder={() => true}
+                          onPress={() => void handleAcceptReserve(sellerPendingReservation.id)}
+                          disabled={processingReserve.has(sellerPendingReservation.id)}
+                          style={[
+                            styles.reserveActionButton,
+                            styles.acceptReserveButton,
+                            processingReserve.has(sellerPendingReservation.id)
+                              ? styles.actionDisabled
+                              : null,
+                          ]}
+                        >
+                          <Text style={[styles.reserveActionText, styles.acceptReserveText]}>
+                            {processingReserve.has(sellerPendingReservation.id)
+                              ? 'Accepting…'
+                              : 'Accept'}
+                          </Text>
+                        </Pressable>
+                        <Pressable
+                          onStartShouldSetResponder={() => true}
+                          onPress={() => void handleDeclineReserve(sellerPendingReservation.id)}
+                          disabled={processingReserve.has(sellerPendingReservation.id)}
+                          style={[
+                            styles.reserveActionButton,
+                            styles.declineReserveButton,
+                            processingReserve.has(sellerPendingReservation.id)
+                              ? styles.actionDisabled
+                              : null,
+                          ]}
+                        >
+                          <Text style={[styles.reserveActionText, styles.declineReserveText]}>
+                            {processingReserve.has(sellerPendingReservation.id)
+                              ? 'Declining…'
+                              : 'Decline'}
+                          </Text>
+                        </Pressable>
+                      </View>
+                    </View>
+                  ) : null}
+
+                  {listing.status === 'sold' ? (
                 <>
                   <AppButton
                     label="Delete listing"
@@ -1127,6 +1249,68 @@ const useStyles = createThemedStyles((colors, shadows) => ({
   ownerActionsDesktop: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+  },
+  reserveRequestCard: {
+    marginTop: spacing.sm,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderColor: colors.primaryLight,
+    backgroundColor: colors.primaryLight,
+    padding: spacing.md,
+  },
+  reserveRequestBody: {
+    flex: 1,
+    minWidth: 0,
+  },
+  reserveRequestTitle: {
+    fontFamily: fonts.semibold,
+    fontSize: fontSizes.sm,
+    lineHeight: lineHeights.sm,
+    color: colors.text,
+  },
+  reserveRequestDetail: {
+    fontFamily: fonts.regular,
+    fontSize: fontSizes.xs,
+    lineHeight: lineHeights.xs,
+    color: colors.textMuted,
+    marginTop: 2,
+  },
+  reserveRequestActions: {
+    flexDirection: 'row',
+    gap: spacing.xs,
+  },
+  reserveActionButton: {
+    minHeight: 28,
+    minWidth: 70,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  acceptReserveButton: {
+    backgroundColor: colors.success,
+  },
+  declineReserveButton: {
+    backgroundColor: colors.textMuted,
+  },
+  actionDisabled: {
+    opacity: 0.5,
+  },
+  reserveActionText: {
+    fontFamily: fonts.semibold,
+    fontSize: fontSizes.xs,
+    lineHeight: lineHeights.xs,
+    color: colors.background,
+  },
+  acceptReserveText: {
+    color: colors.background,
+  },
+  declineReserveText: {
+    color: colors.background,
   },
   buyerActions: {
     marginTop: spacing.xl,
