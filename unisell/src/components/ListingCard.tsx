@@ -178,7 +178,7 @@ export function ListingCard({
         { borderRadius: cardRadius },
         {
           opacity: fade,
-          transform: [{ translateY: slide }, { scale: pressScale }],
+          transform: [{ translateY: slide }, { translateY: liftY }, { scale: pressScale }],
         },
         style,
       ]}
@@ -201,7 +201,7 @@ export function ListingCard({
         onHoverOut={() => setHovered(false)}
         style={({ pressed }) => [
           styles.cardPress,
-          { borderRadius: cardRadius, transform: [{ translateY: liftY }] },
+          { borderRadius: cardRadius },
           hovered && styles.cardHovered,
           pressed && styles.pressed,
         ]}

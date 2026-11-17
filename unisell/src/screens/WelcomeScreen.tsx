@@ -97,17 +97,25 @@ function ValuePropCard({
         ]}
       >
         <Animated.View
-          style={[
-            styles.valueIcon,
-            {
-              transform: [{ translateY: lift }, { scale: iconScale }, { rotate: iconRotate.interpolate({ inputRange: [0, 8], outputRange: ['0deg', '8deg'] }) }],
-            },
-            hovered && { backgroundColor: colors.primaryLight },
-          ]}
+          style={{
+            alignItems: 'center',
+            transform: [
+              { translateY: lift },
+              { scale: iconScale },
+              { rotate: iconRotate.interpolate({ inputRange: [0, 8], outputRange: ['0deg', '8deg'] }) },
+            ],
+          }}
         >
-          <Ionicons name={item.icon} size={17} color={colors.primary} />
+          <View
+            style={[
+              styles.valueIcon,
+              hovered && { backgroundColor: colors.primaryLight },
+            ]}
+          >
+            <Ionicons name={item.icon} size={17} color={colors.primary} />
+          </View>
+          <Text style={styles.valueLabel}>{item.label}</Text>
         </Animated.View>
-        <Text style={styles.valueLabel}>{item.label}</Text>
       </Pressable>
     </FadeInView>
   );

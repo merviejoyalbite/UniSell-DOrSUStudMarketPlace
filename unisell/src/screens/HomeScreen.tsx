@@ -278,7 +278,7 @@ export function HomeScreen({ navigation }: MainTabScreenProps<'Home'>) {
             onToggleFavorite={() => toggleFavorite(item.id)}
             style={[
               styles.card,
-              { flex: 1, maxWidth: columns > 1 ? '50%' : '100%', marginBottom: gridGap },
+              { flex: 1, maxWidth: '100%', marginBottom: gridGap },
             ]}
           />
         )}

@@ -936,7 +936,7 @@
       "listingCategory": "Others",
       "listingStatus": "available",
       "createdAt": "2026-11-16T06:36:25.208Z",
-      "updatedAt": "2026-11-16T06:36:25.565Z",
+      "updatedAt": "2026-11-17T11:32:24.458Z",
       "sample": false,
       "id": 8
     },
@@ -1137,6 +1137,15 @@
       "read": false,
       "sample": false,
       "id": 20
+    },
+    {
+      "chatId": 8,
+      "senderId": 6,
+      "body": "Hi available pa?",
+      "createdAt": "2026-11-17T11:32:24.458Z",
+      "read": false,
+      "sample": false,
+      "id": 21
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useFocusEffect } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Alert, Pressable, Text, View } from 'react-native';
 import { AppButton } from '../components/AppButton';
 import { EmptyState } from '../components/EmptyState';
@@ -79,7 +80,15 @@ export function ListingDetailsScreen({
     updateListingStatus,
     deleteListing,
   } = useListings();
-  const { reservations, cancelReservation } = useReservations();
+  const { reservations, cancelReservation, refresh: refreshReservations } = useReservations();
+
+  // Keep reservations fresh so a declined/cancelled request frees the Reserve
+  // button again when the buyer returns to this listing.
+  useFocusEffect(
+    useCallback(() => {
+      void refreshReservations({ silent: true });
+    }, [refreshReservations]),
+  );
   const { submitted: submittedReviews } = useReviews();
   const { ensureChat } = useMessages();
 

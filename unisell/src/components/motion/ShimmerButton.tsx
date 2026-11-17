@@ -56,7 +56,7 @@ export function ShimmerButton({ label, icon, onPress, variant = 'primary', style
       onPressOut={handlePressOut}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
-      style={[{ transform: [{ translateY: lift }, { scale: press }] }, style]}
+      style={style}
     >
       <Animated.View
         style={{
@@ -73,6 +73,7 @@ export function ShimmerButton({ label, icon, onPress, variant = 'primary', style
           borderColor: border,
           overflow: 'hidden',
           width: '100%',
+          transform: [{ translateY: lift }, { scale: press }],
         }}
       >
         {icon ? (
