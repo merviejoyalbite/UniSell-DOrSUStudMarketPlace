@@ -270,11 +270,7 @@ export function ListingCard({
       {/* Sibling, not a child, of the card button: nested <button> is invalid. */}
       {showFavorite ? (
         <Animated.View
-          style={[
-            styles.heart,
-            { transform: [{ scale: heartPop }] },
-            isFavorite && styles.heartActive,
-          ]}
+          style={[styles.heart, { transform: [{ scale: heartPop }] }]}
         >
           <RoundIconButton
             icon={isFavorite ? 'heart' : 'heart-outline'}
@@ -374,10 +370,6 @@ const useStyles = createThemedStyles((colors, shadows) => ({
     top: spacing.sm,
     right: spacing.sm,
     zIndex: 2,
-    padding: 3,
-  },
-  heartActive: {
-    backgroundColor: colors.favoriteSoft,
   },
   body: {
     padding: spacing.md,
