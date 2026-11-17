@@ -1,5 +1,7 @@
 # UniSell DOrSU
 
+> 🌐 **Live demo:** https://merviejoyalbite.github.io/UniSell-DOrSUStudMarketPlace/
+
 A student marketplace app for DOrSU students. You can buy and sell school stuff like uniforms, books, supplies, gadgets, and even food, whether it's new or used.
 
 **SDG:** SDG 8 (Decent Work and Economic Growth)
