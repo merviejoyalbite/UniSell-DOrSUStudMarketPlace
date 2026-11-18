@@ -339,7 +339,12 @@ export function ListingDetailsScreen({
   }
 
   function confirmDelete() {
-    const isSold = activeListing.status === 'sold';
+    if (!listing) {
+      setActionError('Listing not found.');
+      return;
+    }
+
+    const isSold = listing.status === 'sold';
 
     Alert.alert(
       isSold ? 'Delete this sold listing?' : 'Delete this listing?',
@@ -351,12 +356,20 @@ export function ListingDetailsScreen({
         {
           text: 'Delete',
           style: 'destructive',
-          onPress: () => {
-            void runAction('delete', async () => {
-              await deleteListing(activeListing.id);
+          onPress: async () => {
+            setPendingAction('delete');
+            setActionError(null);
+            try {
+              await deleteListing(listing.id);
               showToast('Listing deleted');
               navigation.goBack();
-            });
+            } catch (err) {
+              setActionError(
+                err instanceof Error ? err.message : 'Could not delete listing.',
+              );
+            } finally {
+              setPendingAction(null);
+            }
           },
         },
       ],
