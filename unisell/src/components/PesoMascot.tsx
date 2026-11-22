@@ -1,28 +1,9 @@
 import { useEffect, useRef } from 'react';
-import { Animated, Easing, Platform, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Animated, Easing, Platform, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useReducedMotion } from '../lib/animations';
 
-const PESO_SVG = (size: number) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="${size}" height="${size}">
-  <g transform="translate(-17,0)" stroke-linecap="round">
-    <g fill="#ffd166">
-      <rect x="88" y="40" width="44" height="176" rx="22"/>
-      <path d="M110 40 H146 A56 56 0 0 1 146 152 H110 Z"/>
-    </g>
-    <rect x="62" y="80" width="156" height="10" rx="5" fill="#fffbe8"/>
-    <rect x="62" y="98" width="156" height="10" rx="5" fill="#fffbe8"/>
-    <circle id="peso-eye-l" cx="138" cy="130" r="12" fill="#3d2c1e"/>
-    <circle id="peso-eye-r" cx="182" cy="130" r="12" fill="#3d2c1e"/>
-    <circle id="peso-pupil-l" cx="142" cy="125" r="4.5" fill="#fff"/>
-    <circle id="peso-pupil-r" cx="186" cy="125" r="4.5" fill="#fff"/>
-    <circle id="peso-highlight-l" cx="134" cy="135" r="2" fill="#fff"/>
-    <circle id="peso-highlight-r" cx="178" cy="135" r="2" fill="#fff"/>
-    <ellipse cx="121" cy="147" rx="6" ry="3.5" fill="#ff9aa2" opacity="0.7"/>
-    <ellipse cx="199" cy="147" rx="6" ry="3.5" fill="#ff9aa2" opacity="0.7"/>
-    <path d="M154 141 Q160 148 166 141" fill="none" stroke="#3d2c1e" stroke-width="3"/>
-    <circle id="peso-hand-l" cx="80" cy="168" r="11" fill="#ffd166"/>
-    <circle id="peso-hand-r" cx="140" cy="182" r="11" fill="#ffd166"/>
-  </g>
-</svg>`;
+const PESO_COLOR = '#FFD166';
+const PESO_DARK = '#3D2C1E';
 
 export interface PesoMascotProps {
   size?: number;
@@ -30,14 +11,18 @@ export interface PesoMascotProps {
 }
 
 /**
- * A small peso-character mascot. On web, the eyes follow the cursor and the
- * hands move gently. Respects reduced motion.
+ * A small peso-character mascot. Gentle idle bob, cursor-following eyes on web,
+ * and a cute face. Renders the same way on web and native so it never looks
+ * like a plain peso sign.
  */
 export function PesoMascot({ size = 80, style }: PesoMascotProps) {
   const reduced = useReducedMotion();
   const containerRef = useRef<any>(null);
   const floatY = useRef(new Animated.Value(0)).current;
+  const pupilX = useRef(new Animated.Value(0)).current;
+  const pupilY = useRef(new Animated.Value(0)).current;
 
+  // Idle bob loop.
   useEffect(() => {
     if (reduced) {
       floatY.setValue(0);
@@ -53,11 +38,11 @@ export function PesoMascot({ size = 80, style }: PesoMascotProps) {
     return () => anim.stop();
   }, [reduced, floatY]);
 
+  // Cursor-following eyes (web only).
   useEffect(() => {
     if (Platform.OS !== 'web' || reduced) return;
-    const container = containerRef.current;
+    const container = containerRef.current as HTMLElement | null;
     if (!container) return;
-
     let raf = 0;
     const onMove = (e: MouseEvent) => {
       cancelAnimationFrame(raf);
@@ -68,30 +53,13 @@ export function PesoMascot({ size = 80, style }: PesoMascotProps) {
         const dx = (e.clientX - cx) / (rect.width / 2);
         const dy = (e.clientY - cy) / (rect.height / 2);
         const clamp = (v: number) => Math.max(-1, Math.min(1, v));
-        const ex = clamp(dx) * 5;
-        const ey = clamp(dy) * 5;
-        const hx = clamp(dx) * 7;
-        const hy = clamp(dy) * 7;
-
-        const set = (id: string, x: number, y: number) => {
-          const el = container.querySelector('#' + id) as any;
-          if (el) el.setAttribute('transform', `translate(${x},${y})`);
-        };
-        set('peso-pupil-l', ex, ey);
-        set('peso-pupil-r', ex, ey);
-        set('peso-highlight-l', ex * 0.6, ey * 0.6);
-        set('peso-highlight-r', ex * 0.6, ey * 0.6);
-        set('peso-eye-l', ex * 0.3, ey * 0.3);
-        set('peso-eye-r', ex * 0.3, ey * 0.3);
-        set('peso-hand-l', hx, hy);
-        set('peso-hand-r', hx, hy);
+        pupilX.setValue(clamp(dx) * 5);
+        pupilY.setValue(clamp(dy) * 5);
       });
     };
     const onLeave = () => {
-      ['peso-pupil-l', 'peso-pupil-r', 'peso-highlight-l', 'peso-highlight-r', 'peso-eye-l', 'peso-eye-r', 'peso-hand-l', 'peso-hand-r'].forEach((id) => {
-        const el = container.querySelector('#' + id) as any;
-        if (el) el.removeAttribute('transform');
-      });
+      pupilX.setValue(0);
+      pupilY.setValue(0);
     };
     window.addEventListener('mousemove', onMove);
     container.addEventListener('mouseleave', onLeave);
@@ -100,23 +68,76 @@ export function PesoMascot({ size = 80, style }: PesoMascotProps) {
       window.removeEventListener('mousemove', onMove);
       container.removeEventListener('mouseleave', onLeave);
     };
-  }, [reduced]);
-
-  if (Platform.OS !== 'web') {
-    return (
-      <Animated.View style={[{ width: size, height: size, alignItems: 'center', justifyContent: 'center', transform: [{ translateY: floatY }] }, style]}>
-        <Text style={{ fontSize: size * 0.6 }}>₱</Text>
-      </Animated.View>
-    );
-  }
+  }, [reduced, pupilX, pupilY]);
 
   return (
-    <Animated.View style={[{ width: size, height: size, alignItems: 'center', justifyContent: 'center', transform: [{ translateY: floatY }] }, style]} ref={containerRef as any}>
-      <div
-        // @ts-ignore
-        dangerouslySetInnerHTML={{ __html: PESO_SVG(size) }}
-        style={{ width: size, height: size }}
-      />
+    <Animated.View
+      ref={containerRef as any}
+      style={[
+        { width: size, height: size, alignItems: 'center', justifyContent: 'center', transform: [{ translateY: floatY }] },
+        style,
+      ]}
+    >
+      <Animated.View style={[{ transform: [{ scale: size / 80 }] }]}>
+        <View style={styles.faceContainer}>
+          <View style={styles.leftEye}>
+            <View style={[styles.pupil, { transform: [{ translateX: pupilX }, { translateY: pupilY }] }]} />
+          </View>
+          <View style={styles.rightEye}>
+            <View style={[styles.pupil, { transform: [{ translateX: pupilX }, { translateY: pupilY }] }]} />
+          </View>
+          <View style={styles.mouth} />
+        </View>
+        <Text style={styles.pesoText}>₱</Text>
+      </Animated.View>
     </Animated.View>
   );
 }
+
+const styles = StyleSheet.create({
+  faceContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 12,
+  },
+  leftEye: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: PESO_DARK,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightEye: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: PESO_DARK,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pupil: {
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
+    backgroundColor: '#FFFFFF',
+  },
+  mouth: {
+    width: 20,
+    height: 6,
+    borderBottomWidth: 2,
+    borderBottomColor: PESO_DARK,
+    borderRadius: 10,
+    marginTop: 4,
+  },
+  pesoText: {
+    fontSize: 34,
+    color: '#FFFFFF',
+    fontWeight: '700',
+    letterSpacing: -2,
+    marginTop: 2,
+  },
+});

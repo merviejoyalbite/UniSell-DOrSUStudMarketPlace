@@ -741,6 +741,57 @@
       "updatedAt": "2026-11-18T00:45:30.949Z",
       "sample": false,
       "id": 16
+    },
+    {
+      "listingId": 1,
+      "buyerId": 6,
+      "sellerId": 2,
+      "buyerName": "Mervie Albite",
+      "buyerCourse": "BSIT",
+      "buyerYearLevel": "3rd Year",
+      "listingTitle": "Calculus: Early Transcendentals (8th Edition)",
+      "status": "pending",
+      "meetupSpot": "Main Library Lobby",
+      "meetupAt": "2026-11-21T06:00:00.000Z",
+      "note": "",
+      "createdAt": "2026-11-18T01:07:16.230Z",
+      "updatedAt": "2026-11-18T01:07:16.230Z",
+      "sample": false,
+      "id": 17
+    },
+    {
+      "listingId": 15,
+      "buyerId": 6,
+      "sellerId": 4,
+      "buyerName": "Mervie Albite",
+      "buyerCourse": "BSIT",
+      "buyerYearLevel": "3rd Year",
+      "listingTitle": "Arduino Uno Starter Kit",
+      "status": "pending",
+      "meetupSpot": "IT Building Lobby",
+      "meetupAt": "2026-11-24T06:00:00.000Z",
+      "note": "",
+      "createdAt": "2026-11-18T01:14:08.517Z",
+      "updatedAt": "2026-11-18T01:14:08.517Z",
+      "sample": false,
+      "id": 18
+    },
+    {
+      "listingId": 12,
+      "buyerId": 6,
+      "sellerId": 2,
+      "buyerName": "Mervie Albite",
+      "buyerCourse": "BSIT",
+      "buyerYearLevel": "3rd Year",
+      "listingTitle": "Poster / Tarpaulin Printing (per sq ft)",
+      "status": "pending",
+      "meetupSpot": "Student Center",
+      "meetupAt": "2026-11-23T06:00:00.000Z",
+      "note": "",
+      "createdAt": "2026-11-19T00:19:49.098Z",
+      "updatedAt": "2026-11-19T00:19:49.098Z",
+      "sample": false,
+      "id": 19
     }
   ],
   "notifications": [
@@ -1019,6 +1070,45 @@
       "createdAt": "2026-11-18T00:45:30.976Z",
       "sample": false,
       "id": 23
+    },
+    {
+      "userId": 2,
+      "title": "Mervie Albite sent a reserve request",
+      "detail": "Review the requested meetup details.",
+      "tone": "teal",
+      "target": "listing",
+      "listingId": 1,
+      "reservationId": 17,
+      "read": false,
+      "createdAt": "2026-11-18T01:07:16.265Z",
+      "sample": false,
+      "id": 24
+    },
+    {
+      "userId": 4,
+      "title": "Mervie Albite sent a reserve request",
+      "detail": "Review the requested meetup details.",
+      "tone": "teal",
+      "target": "listing",
+      "listingId": 15,
+      "reservationId": 18,
+      "read": false,
+      "createdAt": "2026-11-18T01:14:08.552Z",
+      "sample": false,
+      "id": 25
+    },
+    {
+      "userId": 2,
+      "title": "Mervie Albite sent a reserve request",
+      "detail": "Review the requested meetup details.",
+      "tone": "teal",
+      "target": "listing",
+      "listingId": 12,
+      "reservationId": 19,
+      "read": false,
+      "createdAt": "2026-11-19T00:19:49.131Z",
+      "sample": false,
+      "id": 26
     }
   ],
   "reviews": [
@@ -1181,7 +1271,7 @@
       "listingCategory": "Textbooks",
       "listingStatus": "available",
       "createdAt": "2026-11-17T14:43:15.753Z",
-      "updatedAt": "2026-11-17T14:43:20.642Z",
+      "updatedAt": "2026-11-18T01:10:23.357Z",
       "sample": false,
       "id": 10
     },
@@ -1213,9 +1303,41 @@
       "listingCategory": "Others",
       "listingStatus": "available",
       "createdAt": "2026-11-17T15:46:58.611Z",
-      "updatedAt": "2026-11-17T16:38:16.520Z",
+      "updatedAt": "2026-11-18T13:17:40.307Z",
       "sample": false,
       "id": 12
+    },
+    {
+      "listingId": 18,
+      "buyerId": 6,
+      "sellerId": 4,
+      "buyerName": "Mervie Albite",
+      "sellerName": "Carlo Mendoza",
+      "listingTitle": "Extension Cord (4 sockets, 3m)",
+      "listingPrice": 180,
+      "listingImage": "/images/18-extension-cord-4-sockets-3m.jpg",
+      "listingCategory": "Dorm Items",
+      "listingStatus": "available",
+      "createdAt": "2026-11-19T00:20:06.371Z",
+      "updatedAt": "2026-11-19T00:20:08.752Z",
+      "sample": false,
+      "id": 13
+    },
+    {
+      "listingId": 3,
+      "buyerId": 6,
+      "sellerId": 4,
+      "buyerName": "Mervie Albite",
+      "sellerName": "Carlo Mendoza",
+      "listingTitle": "TI-84 Plus CE Graphing Calculator",
+      "listingPrice": 1800,
+      "listingImage": "/images/03-ti-84-plus-ce-graphing-calculator.jpg",
+      "listingCategory": "Gadgets",
+      "listingStatus": "available",
+      "createdAt": "2026-11-19T00:41:36.706Z",
+      "updatedAt": "2026-11-19T00:41:40.812Z",
+      "sample": false,
+      "id": 14
     }
   ],
   "chatMessages": [
@@ -1434,6 +1556,69 @@
       "read": false,
       "sample": false,
       "id": 24
+    },
+    {
+      "chatId": 12,
+      "senderId": 6,
+      "body": ",mm",
+      "createdAt": "2026-11-18T01:06:33.516Z",
+      "read": false,
+      "sample": false,
+      "id": 25
+    },
+    {
+      "chatId": 10,
+      "senderId": 6,
+      "body": "Can you lower the price?",
+      "createdAt": "2026-11-18T01:10:13.578Z",
+      "read": false,
+      "sample": false,
+      "id": 26
+    },
+    {
+      "chatId": 10,
+      "senderId": 6,
+      "body": "Is this still available?",
+      "createdAt": "2026-11-18T01:10:18.805Z",
+      "read": false,
+      "sample": false,
+      "id": 27
+    },
+    {
+      "chatId": 10,
+      "senderId": 6,
+      "body": "Can we meet tomorrow?",
+      "createdAt": "2026-11-18T01:10:23.357Z",
+      "read": false,
+      "sample": false,
+      "id": 28
+    },
+    {
+      "chatId": 12,
+      "senderId": 6,
+      "body": "Hello",
+      "createdAt": "2026-11-18T13:17:40.307Z",
+      "read": false,
+      "sample": false,
+      "id": 29
+    },
+    {
+      "chatId": 13,
+      "senderId": 6,
+      "body": "Is this still available?",
+      "createdAt": "2026-11-19T00:20:08.752Z",
+      "read": false,
+      "sample": false,
+      "id": 30
+    },
+    {
+      "chatId": 14,
+      "senderId": 6,
+      "body": "wkjdkaj",
+      "createdAt": "2026-11-19T00:41:40.812Z",
+      "read": false,
+      "sample": false,
+      "id": 31
     }
   ]
 }
