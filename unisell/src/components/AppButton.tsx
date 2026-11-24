@@ -279,6 +279,8 @@ export function AppButton({
               fontSize: sizeToken.fontSize,
               lineHeight: sizeToken.lineHeight,
               color: contentColor,
+              width: '100%',
+              textAlign: 'center',
             },
             labelStyle,
           ]}

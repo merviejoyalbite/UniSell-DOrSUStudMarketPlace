@@ -792,6 +792,23 @@
       "updatedAt": "2026-11-19T00:19:49.098Z",
       "sample": false,
       "id": 19
+    },
+    {
+      "listingId": 3,
+      "buyerId": 6,
+      "sellerId": 4,
+      "buyerName": "Mervie Albite",
+      "buyerCourse": "BSIT",
+      "buyerYearLevel": "3rd Year",
+      "listingTitle": "TI-84 Plus CE Graphing Calculator",
+      "status": "pending",
+      "meetupSpot": "IT Building Lobby",
+      "meetupAt": "2026-11-26T06:00:00.000Z",
+      "note": "",
+      "createdAt": "2026-11-24T02:15:18.818Z",
+      "updatedAt": "2026-11-24T02:15:18.818Z",
+      "sample": false,
+      "id": 20
     }
   ],
   "notifications": [
@@ -1109,6 +1126,19 @@
       "createdAt": "2026-11-19T00:19:49.131Z",
       "sample": false,
       "id": 26
+    },
+    {
+      "userId": 4,
+      "title": "Mervie Albite sent a reserve request",
+      "detail": "Review the requested meetup details.",
+      "tone": "teal",
+      "target": "listing",
+      "listingId": 3,
+      "reservationId": 20,
+      "read": false,
+      "createdAt": "2026-11-24T02:15:18.925Z",
+      "sample": false,
+      "id": 27
     }
   ],
   "reviews": [
