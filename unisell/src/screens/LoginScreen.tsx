@@ -4,7 +4,6 @@ import { Pressable, Text, View } from 'react-native';
 import { AppButton } from '../components/AppButton';
 import { BrandMark } from '../components/BrandMark';
 import { ErrorBanner } from '../components/ErrorBanner';
-import { PesoMascot } from '../components/PesoMascot';
 import { FormField } from '../components/FormField';
 import { RoundIconButton } from '../components/RoundIconButton';
 import { ScreenContainer } from '../components/ScreenContainer';
@@ -104,7 +103,6 @@ export function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
         {isDesktop ? (
           <View style={styles.heroColumn}>
             {brandBlock}
-            <PesoMascot size={72} style={{ alignSelf: 'center', marginBottom: spacing.md }} />
             <WelcomeHero />
             <Text style={styles.heroText}>
               Pick up right where you left off and keep campus finds moving.

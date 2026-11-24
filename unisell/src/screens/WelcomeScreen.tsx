@@ -13,7 +13,6 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppButton } from '../components/AppButton';
 import { BrandMark } from '../components/BrandMark';
-import { PesoMascot } from '../components/PesoMascot';
 import { ResponsiveContainer } from '../components/ResponsiveContainer';
 import { WelcomeHero } from '../components/WelcomeHero';
 import { FloatingShapes } from '../components/motion/FloatingShapes';
@@ -244,7 +243,6 @@ export function WelcomeScreen({ navigation }: RootStackScreenProps<'Welcome'>) {
 
   const heroBlock = (
     <View style={styles.hero}>
-      <PesoMascot size={72} style={{ alignSelf: 'center', marginBottom: spacing.sm }} />
       <FadeInView slideUp={12} delay={220}>
         <Text
           accessibilityRole="header"
